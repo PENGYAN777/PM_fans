@@ -52,7 +52,7 @@ z6_m2 = np.zeros(n)
 
 for i in range(50):
     theta[i] = i*math.pi/180 # rad
-    M1 = 1.1 # upstream Mach number
+    M1 = 1.0 # upstream Mach number
     # for z1
     nu1 = z1.iloc[:,6][np.argmin(abs(z1.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
