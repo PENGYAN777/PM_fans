@@ -72,8 +72,8 @@ plt.axhline(pc, dashes = [2, 2])
 """
 test points
 """
-z9_p = [1.55e6]
-z9_t = [673]
+z9_p = [1.55e6,1.30E6,  1.05E6, 8.01E5, 5.51E5, 3.01E5]
+z9_t = [673, 654.39, 624.85, 585.46, 531.30, 449.23]
 plt.plot(z9_t,z9_p,'ko',lw = lw)
 
 z8_p = [1.55e6]
@@ -84,7 +84,17 @@ z7_p = [2.13e6]
 z7_t = [577.21]
 plt.plot(z7_t,z7_p,'bo',lw = lw)
 
+z6_p = [2.13e6]
+z6_t = [550.71]
+plt.plot(z6_t,z6_p,'k*',lw = lw)
 
+z5_p = [2.32e6]
+z5_t = [543.88]
+plt.plot(z5_t,z5_p,'r*',lw = lw)
+
+z4_p = [2.32e6]
+z4_t = [535.13]
+plt.plot(z4_t,z4_p,'b*',lw = lw)
 
 plt.ylim(1e5,7e6)
 plt.gca().set_yscale('log')

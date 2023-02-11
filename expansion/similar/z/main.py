@@ -25,8 +25,8 @@ from newIOpairs import TGfromZP, PGfromZT, PTfromZG, ZPfromTG, ZTfromPG, ZGfromP
 #Z5, T5  = ZTfromPG(8e6,0.8)
 
 # check consistence of P,T, Z,Gamma
-P = 1.55e6
-Z = 0.9
+P = 0.85e6
+Z = 0.8
 T,G = TGfromZP(Z,P)
 
 # compute active degree of freedom

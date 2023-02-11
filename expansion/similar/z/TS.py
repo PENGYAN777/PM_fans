@@ -73,8 +73,8 @@ plt.axhline(Tc, dashes = [2, 2])
 """
 test points
 """
-z9_p = [1.55e6]
-z9_t = [673]
+z9_p = [1.55e6, 1.25E6, 0.95E6, 0.65E6, 0.35E6]
+z9_t = [673, 649.05, 610.32,555.30, 468.68]
 z9_s = CP.CoolProp.PropsSI('Smass','P',z9_p,'T',z9_t,fluidname)
 plt.plot(z9_s,z9_t,'ko',lw = lw)
 
