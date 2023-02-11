@@ -88,18 +88,18 @@ z7_t = [610.08, 595.31, 576.16, 551.54, 519.26, 474.40]
 z7_s = CP.CoolProp.PropsSI('Smass','P',z7_p,'T',z7_t,fluidname)
 plt.plot(z7_s,z7_t,'bo',lw = lw)
 
-z6_p = [2.13e6]
-z6_t = [550.71]
+z6_p = [5e6, 4.3e6,  3.6e6, 2.9e6, 2.2e6, 1.5e6]
+z6_t = [619.38, 612.27, 599.69, 581.08, 553.733, 511.60]
 z6_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
 plt.plot(z6_s,z6_t,'k*',lw = lw)
 
-z5_p = [2.32e6]
-z5_t = [543.88]
-z5_s = CP.CoolProp.PropsSI('Smass','P',z5_p,'T',z6_t,fluidname)
+z5_p = [5e6, 4.35e6, 3.70e6, 3.05E6, 2.40E6, 1.75E6]
+z5_t = [589.29, 588.20, 580.54, 567.41, 546.62, 515.98]
+z5_s = CP.CoolProp.PropsSI('Smass','P',z5_p,'T',z5_t,fluidname)
 plt.plot(z5_s,z5_t,'r*',lw = lw)
 
-z4_p = [2.32e6]
-z4_t = [535.13]
+z4_p = [4e6,   3.6e6, 3.2e6, 2.8e6, 2.4e6, 2e6]
+z4_t = [563.03,  561.94, 557.01, 548.81, 539.86, 523.09]
 z4_s = CP.CoolProp.PropsSI('Smass','P',z4_p,'T',z4_t,fluidname)
 plt.plot(z4_s,z4_t,'b*',lw = lw)
 
