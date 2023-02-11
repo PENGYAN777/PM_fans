@@ -20,8 +20,8 @@ z9= pd.read_csv("z9.csv", ",", skiprows=0)
 z8= pd.read_csv("z8.csv", ",", skiprows=0)
 z7= pd.read_csv("z7.csv", ",", skiprows=0)
 z6= pd.read_csv("z6.csv", ",", skiprows=0)
-z5= pd.read_csv("z5.csv", ",", skiprows=0)
-z4= pd.read_csv("z4.csv", ",", skiprows=0)
+# z5= pd.read_csv("z5.csv", ",", skiprows=0)
+# z4= pd.read_csv("z4.csv", ",", skiprows=0)
 
 """
 1. input theta and upstream Mach number, compute downstream data
@@ -32,29 +32,29 @@ z9_m2 = np.zeros(50)
 z8_m2 = np.zeros(50) 
 z7_m2 = np.zeros(50) 
 z6_m2 = np.zeros(50) 
-z5_m2 = np.zeros(50) 
-z4_m2 = np.zeros(50) 
+# z5_m2 = np.zeros(50) 
+# z4_m2 = np.zeros(50) 
 
 z9_P2 = np.zeros(50) 
 z8_P2 = np.zeros(50) 
 z7_P2 = np.zeros(50) 
 z6_P2 = np.zeros(50) 
-z5_P2 = np.zeros(50) 
-z4_P2 = np.zeros(50) 
+# z5_P2 = np.zeros(50) 
+# z4_P2 = np.zeros(50) 
 
 z9_T2 = np.zeros(50) 
 z8_T2 = np.zeros(50) 
 z7_T2 = np.zeros(50) 
 z6_T2 = np.zeros(50) 
-z5_T2 = np.zeros(50) 
-z4_T2 = np.zeros(50) 
+# z5_T2 = np.zeros(50) 
+# z4_T2 = np.zeros(50) 
 
 z9_D2 = np.zeros(50) 
 z8_D2 = np.zeros(50) 
 z7_D2 = np.zeros(50) 
 z6_D2 = np.zeros(50) 
-z5_D2 = np.zeros(50) 
-z4_D2 = np.zeros(50) 
+# z5_D2 = np.zeros(50) 
+# z4_D2 = np.zeros(50) 
 
 for i in range(50):
     theta[i] = i*math.pi/180 # rad
@@ -103,28 +103,28 @@ for i in range(50):
     z6_D2[i] = D2
     T2 = z6.iloc[:,4][np.argmin(abs(z6.iloc[:,6]-nu2))] 
     z6_T2[i] = T2
-    # for z5
-    nu1 = z5.iloc[:,6][np.argmin(abs(z5.iloc[:,5]-M1))] 
-    nu2 = nu1 + theta[i]
-    M2 = z5.iloc[:,5][np.argmin(abs(z5.iloc[:,6]-nu2))] 
-    z5_m2[i] = M2
-    P2 = z5.iloc[:,2][np.argmin(abs(z5.iloc[:,6]-nu2))] 
-    z5_P2[i] = P2
-    D2 = z5.iloc[:,3][np.argmin(abs(z5.iloc[:,6]-nu2))] 
-    z5_D2[i] = D2
-    T2 = z5.iloc[:,4][np.argmin(abs(z5.iloc[:,6]-nu2))] 
-    z5_T2[i] = T2
-    # for z4
-    nu1 = z4.iloc[:,6][np.argmin(abs(z4.iloc[:,5]-M1))] 
-    nu2 = nu1 + theta[i]
-    M2 = z4.iloc[:,5][np.argmin(abs(z4.iloc[:,6]-nu2))] 
-    z4_m2[i] = M2
-    P2 = z4.iloc[:,2][np.argmin(abs(z4.iloc[:,6]-nu2))] 
-    z4_P2[i] = P2
-    D2 = z4.iloc[:,3][np.argmin(abs(z4.iloc[:,6]-nu2))] 
-    z4_D2[i] = D2
-    T2 = z4.iloc[:,4][np.argmin(abs(z4.iloc[:,6]-nu2))] 
-    z4_T2[i] = T2
+    # # for z5
+    # nu1 = z5.iloc[:,6][np.argmin(abs(z5.iloc[:,5]-M1))] 
+    # nu2 = nu1 + theta[i]
+    # M2 = z5.iloc[:,5][np.argmin(abs(z5.iloc[:,6]-nu2))] 
+    # z5_m2[i] = M2
+    # P2 = z5.iloc[:,2][np.argmin(abs(z5.iloc[:,6]-nu2))] 
+    # z5_P2[i] = P2
+    # D2 = z5.iloc[:,3][np.argmin(abs(z5.iloc[:,6]-nu2))] 
+    # z5_D2[i] = D2
+    # T2 = z5.iloc[:,4][np.argmin(abs(z5.iloc[:,6]-nu2))] 
+    # z5_T2[i] = T2
+    # # for z4
+    # nu1 = z4.iloc[:,6][np.argmin(abs(z4.iloc[:,5]-M1))] 
+    # nu2 = nu1 + theta[i]
+    # M2 = z4.iloc[:,5][np.argmin(abs(z4.iloc[:,6]-nu2))] 
+    # z4_m2[i] = M2
+    # P2 = z4.iloc[:,2][np.argmin(abs(z4.iloc[:,6]-nu2))] 
+    # z4_P2[i] = P2
+    # D2 = z4.iloc[:,3][np.argmin(abs(z4.iloc[:,6]-nu2))] 
+    # z4_D2[i] = D2
+    # T2 = z4.iloc[:,4][np.argmin(abs(z4.iloc[:,6]-nu2))] 
+    # z4_T2[i] = T2
     
     
 
@@ -139,8 +139,8 @@ axes.plot(theta , z9_m2 , 'k', lw=lwh, label="$Z_t = 0.9$")
 axes.plot(theta , z8_m2 , 'r', lw=lwh, label="$Z_t = 0.8$")
 axes.plot(theta , z7_m2 , 'b', lw=lwh, label="$Z_t = 0.7$")
 axes.plot(theta , z6_m2 , 'k--', lw=lwh, label="$Z_t = 0.6$")
-axes.plot(theta , z5_m2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
-axes.plot(theta , z4_m2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
+# axes.plot(theta , z5_m2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
+# axes.plot(theta , z4_m2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
 
 axes.set_xlabel('$\\theta$(rad)',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
@@ -155,8 +155,8 @@ axes.plot(theta , z9_P2 , 'k', lw=lwh, label="$Z_t = 0.9$")
 axes.plot(theta , z8_P2 , 'r', lw=lwh, label="$Z_t = 0.8$")
 axes.plot(theta , z7_P2 , 'b', lw=lwh, label="$Z_t = 0.7$")
 axes.plot(theta , z6_P2 , 'k--', lw=lwh, label="$Z_t = 0.6$")
-axes.plot(theta , z5_P2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
-axes.plot(theta , z4_P2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
+# axes.plot(theta , z5_P2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
+# axes.plot(theta , z4_P2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
 
 
 axes.set_xlabel('$\\theta$(rad)',fontsize=12)
@@ -172,8 +172,8 @@ axes.plot(theta , z9_T2 , 'k', lw=lwh, label="$Z_t = 0.9$")
 axes.plot(theta , z8_T2 , 'r', lw=lwh, label="$Z_t = 0.8$")
 axes.plot(theta , z7_T2 , 'b', lw=lwh, label="$Z_t = 0.7$")
 axes.plot(theta , z6_T2 , 'k--', lw=lwh, label="$Z_t = 0.6$")
-axes.plot(theta , z5_T2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
-axes.plot(theta , z4_T2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
+# axes.plot(theta , z5_T2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
+# axes.plot(theta , z4_T2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
 
 axes.set_xlabel('$\\theta$(rad)',fontsize=12)
 axes.set_ylabel('$T_2/T_c$',fontsize=12) 
@@ -188,8 +188,8 @@ axes.plot(theta , z9_D2 , 'k', lw=lwh, label="$Z_t = 0.9$")
 axes.plot(theta , z8_D2 , 'r', lw=lwh, label="$Z_t = 0.8$")
 axes.plot(theta , z7_D2 , 'b', lw=lwh, label="$Z_t = 0.7$")
 axes.plot(theta , z6_D2 , 'k--', lw=lwh, label="$Z_t = 0.6$")
-axes.plot(theta , z5_D2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
-axes.plot(theta , z4_D2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
+# axes.plot(theta , z5_D2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
+# axes.plot(theta , z4_D2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
 
 axes.set_xlabel('$\\theta$(rad)',fontsize=12)
 axes.set_ylabel('$\\rho_2/\\rho_c$',fontsize=12) 
