@@ -48,7 +48,7 @@ es = CP.CoolProp.PropsSI('Smass','T',Ts,'Q',1,fluidname)
 # ----------------
 # Contour of Z and Gamma
 # ----------------
-n = 200 # number of points
+n = 100 # number of points
 y = np.linspace(Tmin, Tmax,n)
 x = np.linspace(300, 1600,n)
 X,Y = np.meshgrid(x,y)
@@ -58,7 +58,7 @@ Gamma =  CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics','Smass',X,
 levels = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 cp = plt.contour(X, Y, Z, levels, colors='black', linestyles='dashed')
 plt.clabel(cp, inline=True,  fontsize=10)
-plt.contourf(X, Y, Gamma, [0.4,0.5,0.6,0.7,0.8, 0.9,1.0], cmap='rainbow')
+plt.contourf(X, Y, Gamma, [0.4,0.6,0.8,1.0,1.2,1.4,1.6], cmap='rainbow')
 plt.colorbar()
 # ------
 # Labels
@@ -73,20 +73,35 @@ plt.axhline(Tc, dashes = [2, 2])
 """
 test points
 """
-z9_p = [1.55e6, 1.25E6, 0.95E6, 0.65E6, 0.35E6]
-z9_t = [673, 649.05, 610.32,555.30, 468.68]
+z9_p = [1.55e6,1.30E6,  1.05E6, 8.01E5, 5.51E5, 3.01E5]
+z9_t = [673, 654.39, 624.85, 585.46, 531.30, 449.23]
 z9_s = CP.CoolProp.PropsSI('Smass','P',z9_p,'T',z9_t,fluidname)
 plt.plot(z9_s,z9_t,'ko',lw = lw)
 
-z8_p = [1.55e6]
-z8_t = [584.85]
+z8_p = [2.52e6,2.12E6, 1.72E6, 1.32E6, 9.20E5, 5.21E5]
+z8_t = [643.45, 623.76, 598.05, 564.13, 515.98, 443.76]
 z8_s = CP.CoolProp.PropsSI('Smass','P',z8_p,'T',z8_t,fluidname)
 plt.plot(z8_s,z8_t,'ro',lw = lw)
 
-z7_p = [2.13e6]
-z7_t = [577.21]
+z7_p = [2.91E6, 2.51E6, 2.11E6, 1.71E6, 1.31E6, 9.08E5 ]
+z7_t = [610.08, 595.31, 576.16, 551.54, 519.26, 474.40]
 z7_s = CP.CoolProp.PropsSI('Smass','P',z7_p,'T',z7_t,fluidname)
 plt.plot(z7_s,z7_t,'bo',lw = lw)
+
+z6_p = [2.13e6]
+z6_t = [550.71]
+z6_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
+plt.plot(z6_s,z6_t,'k*',lw = lw)
+
+z5_p = [2.32e6]
+z5_t = [543.88]
+z5_s = CP.CoolProp.PropsSI('Smass','P',z5_p,'T',z6_t,fluidname)
+plt.plot(z5_s,z5_t,'r*',lw = lw)
+
+z4_p = [2.32e6]
+z4_t = [535.13]
+z4_s = CP.CoolProp.PropsSI('Smass','P',z4_p,'T',z4_t,fluidname)
+plt.plot(z4_s,z4_t,'b*',lw = lw)
 
 plt.ylim(300,Tmax)
 # plt.gca().set_yscale('log')

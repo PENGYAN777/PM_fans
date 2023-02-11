@@ -49,7 +49,7 @@ ps = CP.CoolProp.PropsSI('P','T',Ts,'Q',0,fluidname)
 # ----------------
 n = 200 # number of points
 x = np.linspace(Tmin, Tmax,n)
-y = np.linspace(1e5, 7e6,n)
+y = np.linspace(1e5, 1e7,n)
 X,Y = np.meshgrid(x,y)
 Z =  CP.CoolProp.PropsSI('Z','T',X,'P',Y,fluidname)
 Gamma =  CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics','T',X,'P',Y,fluidname)
@@ -57,7 +57,7 @@ Gamma =  CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics','T',X,'P',
 levels = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 cp = plt.contour(X, Y, Z, levels, colors='black', linestyles='dashed')
 plt.clabel(cp, inline=True,  fontsize=10)
-plt.contourf(X, Y, Gamma, [0.4,0.5,0.6,0.7,0.8, 0.9,1.0], cmap='rainbow')
+plt.contourf(X, Y, Gamma, [0.4,0.6,0.8,1.0,1.2,1.4,1.6], cmap='rainbow')
 plt.colorbar()
 # ------
 # Labels
@@ -76,16 +76,16 @@ z9_p = [1.55e6,1.30E6,  1.05E6, 8.01E5, 5.51E5, 3.01E5]
 z9_t = [673, 654.39, 624.85, 585.46, 531.30, 449.23]
 plt.plot(z9_t,z9_p,'ko',lw = lw)
 
-z8_p = [1.55e6]
-z8_t = [584.85]
+z8_p = [2.52e6,2.12E6, 1.72E6, 1.32E6, 9.20E5, 5.21E5]
+z8_t = [643.45, 623.76, 598.05, 564.13, 515.98, 443.76]
 plt.plot(z8_t,z8_p,'ro',lw = lw)
 
-z7_p = [2.13e6]
-z7_t = [577.21]
+z7_p = [2.91E6, 2.51E6, 2.11E6, 1.71E6, 1.31E6, 9.08E5 ]
+z7_t = [610.08, 595.31, 576.16, 551.54, 519.26, 474.40]
 plt.plot(z7_t,z7_p,'bo',lw = lw)
 
-z6_p = [2.13e6]
-z6_t = [550.71]
+z6_p = [5e6, 4.3e6,  3.6e6, 2.9e6, 2.2e6, 1.5e6]
+z6_t = [619.38, 612.27, 599.69, 581.08, 553.733, 511.60]
 plt.plot(z6_t,z6_p,'k*',lw = lw)
 
 z5_p = [2.32e6]
@@ -96,7 +96,7 @@ z4_p = [2.32e6]
 z4_t = [535.13]
 plt.plot(z4_t,z4_p,'b*',lw = lw)
 
-plt.ylim(1e5,7e6)
+plt.ylim(1e5,1e7)
 plt.gca().set_yscale('log')
 plt.gca().set_xlim(Tmin, Tmax)
 plt.ylabel('Pressure [Pa]')
