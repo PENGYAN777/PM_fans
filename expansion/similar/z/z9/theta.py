@@ -42,11 +42,9 @@ z5_m2 = np.zeros(n)
 z6_m2 = np.zeros(n) 
 
 
-# z91_P2 = np.zeros(n) 
-
-# z91_T2 = np.zeros(n) 
-
-# z91_D2 = np.zeros(n) 
+# z1_P2 = np.zeros(n) 
+# z1_T2 = np.zeros(n) 
+# z1_D2 = np.zeros(n) 
 
 
 
@@ -58,12 +56,12 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z1.iloc[:,5][np.argmin(abs(z1.iloc[:,6]-nu2))] 
     z1_m2[i] = M2
-    # P2 = z91.iloc[:,2][np.argmin(abs(z91.iloc[:,6]-nu2))] 
-    # z91_P2[i] = P2
-    # D2 = z91.iloc[:,3][np.argmin(abs(z91.iloc[:,6]-nu2))] 
-    # z91_D2[i] = D2
-    # T2 = z91.iloc[:,4][np.argmin(abs(z91.iloc[:,6]-nu2))] 
-    # z91_T2[i] = T2
+    # P2 = z1.iloc[:,2][np.argmin(abs(z1.iloc[:,6]-nu2))] 
+    # z1_P2[i] = P2
+    # D2 = z1.iloc[:,3][np.argmin(abs(z1.iloc[:,6]-nu2))] 
+    # z1_D2[i] = D2
+    # T2 = z1.iloc[:,4][np.argmin(abs(z1.iloc[:,6]-nu2))] 
+    # z1_T2[i] = T2
     # for z2
     nu1 = z2.iloc[:,6][np.argmin(abs(z2.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
@@ -102,15 +100,19 @@ for i in range(50):
 """
 2. plot
 """
+
+nc = 10
+colors = plt.cm.tab20(np.linspace(0, 1, nc))
+
 fig1 = plt.figure( dpi=300)
 lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Z91")
-axes.plot(theta/math.pi*180  , z2_m2 , 'r', lw=lwh, label="Z92")
-axes.plot(theta/math.pi*180  , z3_m2 , 'b', lw=lwh, label="Z93")
-axes.plot(theta/math.pi*180  , z4_m2 , 'k--', lw=lwh, label="Z94")
-axes.plot(theta/math.pi*180  , z5_m2 , 'r--', lw=lwh, label="Z95")
-axes.plot(theta/math.pi*180  , z6_m2 , 'b--', lw=lwh, label="Z96")
+axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], lw=lwh, label="Z91")
+axes.plot(theta/math.pi*180  , z2_m2 , color=colors[1], lw=lwh, label="Z92")
+axes.plot(theta/math.pi*180  , z3_m2 , color=colors[2], lw=lwh, label="Z93")
+axes.plot(theta/math.pi*180  , z4_m2 , color=colors[3], lw=lwh, label="Z94")
+axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="Z95")
+axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], lw=lwh, label="Z96")
 
 ax2 = axes.twinx()
 ax2.plot(theta/math.pi*180  , diff , 'k*', lw=lwh)
@@ -122,5 +124,6 @@ axes.set_ylabel('$M_2$',fontsize=12)
 axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig1.savefig("z9_M2_theta.pdf")
+
 
 

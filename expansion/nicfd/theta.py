@@ -12,7 +12,7 @@ import pandas as pd
 import math
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
-
+import CoolProp as CP
 """
 0. get data
 """
@@ -57,12 +57,6 @@ z6_D2 = np.zeros(n)
 z5_D2 = np.zeros(n)  
 z4_D2 = np.zeros(n) 
 
-diff_z9 = np.zeros(n-1) # diff
-diff_z8 = np.zeros(n-1) # diff
-diff_z7 = np.zeros(n-1) # diff
-diff_z6 = np.zeros(n-1) # diff
-diff_z5 = np.zeros(n-1) # diff
-diff_z4 = np.zeros(n-1) # diff
 
 for i in range(n):
     theta[i] = i*math.pi/180 # rad
@@ -140,62 +134,73 @@ for i in range(n):
 """
 2. plot
 """
+nc = 10
+colors = plt.cm.tab20(np.linspace(0, 1, nc))
+
 fig1 = plt.figure( dpi=300)
 lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z9_m2 , 'k', lw=lwh, label="$Z_t = 0.9$")
-axes.plot(theta/math.pi*180  , z8_m2 , 'r', lw=lwh, label="$Z_t = 0.8$")
-axes.plot(theta/math.pi*180  , z7_m2 , 'b', lw=lwh, label="$Z_t = 0.7$")
-axes.plot(theta/math.pi*180  , z6_m2 , 'k--', lw=lwh, label="$Z_t = 0.6$")
-axes.plot(theta/math.pi*180  , z5_m2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
-axes.plot(theta/math.pi*180  , z4_m2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
+axes.plot(theta/math.pi*180  , z9_m2 , color=colors[0], lw=lwh, label="$Z_t = 0.9$")
+axes.plot(theta/math.pi*180  , z8_m2 , color=colors[1], lw=lwh, label="$Z_t = 0.8$")
+axes.plot(theta/math.pi*180  , z7_m2 , color=colors[2], lw=lwh, label="$Z_t = 0.7$")
+axes.plot(theta/math.pi*180  , z6_m2 , color=colors[3], lw=lwh, label="$Z_t = 0.6$")
+axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="$Z_t = 0.5$")
+axes.plot(theta/math.pi*180  , z4_m2 , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
 
 axes.set_xlabel('$\\theta$(degree)',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('$M_2$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("M2_theta.pdf")
+fig1.savefig("ex_nicfd_M2_theta.pdf")
 
 fig2 = plt.figure( dpi=300)
 lwh = 2
 axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z9_P2 , 'k', lw=lwh, label="$Z_t = 0.9$")
-axes.plot(theta/math.pi*180  , z8_P2 , 'r', lw=lwh, label="$Z_t = 0.8$")
-axes.plot(theta/math.pi*180  , z7_P2 , 'b', lw=lwh, label="$Z_t = 0.7$")
-axes.plot(theta/math.pi*180  , z6_P2 , 'k--', lw=lwh, label="$Z_t = 0.6$")
-axes.plot(theta/math.pi*180  , z5_P2 , 'r--', lw=lwh, label="$Z_t = 0.5$")
-axes.plot(theta/math.pi*180  , z4_P2 , 'b--', lw=lwh, label="$Z_t = 0.4$")
+axes.plot(theta/math.pi*180  , z9_P2 , color=colors[0], lw=lwh, label="$Z_t = 0.9$")
+axes.plot(theta/math.pi*180  , z8_P2 , color=colors[1], lw=lwh, label="$Z_t = 0.8$")
+axes.plot(theta/math.pi*180  , z7_P2 , color=colors[2], lw=lwh, label="$Z_t = 0.7$")
+axes.plot(theta/math.pi*180  , z6_P2 , color=colors[3], lw=lwh, label="$Z_t = 0.6$")
+axes.plot(theta/math.pi*180  , z5_P2 , color=colors[4], lw=lwh, label="$Z_t = 0.5$")
+axes.plot(theta/math.pi*180  , z4_P2 , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
 
 
-axes.set_xlabel('$\\theta$(rdegree)',fontsize=12)
+axes.set_xlabel('$\\theta$(degree)',fontsize=12)
 axes.set_ylabel('$P_2/P_t$',fontsize=12) 
 axes.set_title('$P_2/P_t$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig2.savefig("P2_theta.pdf")
+fig2.savefig("ex_nicfd_P2_theta.pdf")
 
 """
 3. plot Delat P
 """
-for i in range(n-1):
-    diff_z9[i] = -(z9_P2[i+1]-z9_P2[i])/z9_P2[0]
-    diff_z8[i] = -(z8_P2[i+1]-z8_P2[i])/z8_P2[0]
-    diff_z7[i] = -(z7_P2[i+1]-z7_P2[i])/z7_P2[0]
-    diff_z6[i] = -(z6_P2[i+1]-z6_P2[i])/z6_P2[0]
-    diff_z5[i] = -(z5_P2[i+1]-z5_P2[i])/z5_P2[0]
-    diff_z4[i] = -(z4_P2[i+1]-z4_P2[i])/z4_P2[0]
+
+diff_z9 = np.zeros(n) # diff
+diff_z8 = np.zeros(n) # diff
+diff_z7 = np.zeros(n) # diff
+diff_z6 = np.zeros(n) # diff
+diff_z5 = np.zeros(n) # diff
+diff_z4 = np.zeros(n) # diff
+
+for i in range(n):
+    diff_z9[i] = (z9_P2[i] - z9_P2[0])/( z9_P2[0])
+    diff_z8[i] = (z8_P2[i] - z8_P2[0])/( z8_P2[0])
+    diff_z7[i] = (z7_P2[i] - z7_P2[0])/( z7_P2[0])
+    diff_z6[i] = (z6_P2[i] - z6_P2[0])/( z6_P2[0])
+    diff_z5[i] = (z5_P2[i] - z5_P2[0])/( z5_P2[0])
+    diff_z4[i] = (z4_P2[i] - z4_P2[0])/( z4_P2[0])
 
 fig3 = plt.figure( dpi=300)
 lwh = 2
 axes = fig3.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta[1:n]/math.pi*180 ,  diff_z9 , 'k', lw=lwh, label="$Z_t = 0.9$")
-axes.plot(theta[1:n]/math.pi*180 ,  diff_z8 , 'r', lw=lwh, label="$Z_t = 0.8$")
-axes.plot(theta[1:n]/math.pi*180 ,  diff_z7 , 'b', lw=lwh, label="$Z_t = 0.7$")
-axes.plot(theta[1:n]/math.pi*180 ,  diff_z6 , 'k--', lw=lwh, label="$Z_t = 0.6$")
-axes.plot(theta[1:n]/math.pi*180 ,  diff_z5 , 'r--', lw=lwh, label="$Z_t = 0.5$")
-axes.plot(theta[1:n]/math.pi*180 ,  diff_z4 , 'b--', lw=lwh, label="$Z_t = 0.4$")
+axes.plot(theta/math.pi*180 ,  diff_z9 , color=colors[0], lw=lwh, label="$Z_t = 0.9$")
+axes.plot(theta/math.pi*180 ,  diff_z8 , color=colors[1], lw=lwh, label="$Z_t = 0.8$")
+axes.plot(theta/math.pi*180 ,  diff_z7 , color=colors[2], lw=lwh, label="$Z_t = 0.7$")
+axes.plot(theta/math.pi*180 ,  diff_z6 , color=colors[3], lw=lwh, label="$Z_t = 0.6$")
+axes.plot(theta/math.pi*180 ,  diff_z5 , color=colors[4], lw=lwh, label="$Z_t = 0.5$")
+axes.plot(theta/math.pi*180 ,  diff_z4 , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
 
 axes.set_xlabel('$\\theta$(degree)',fontsize=12)
-axes.set_ylabel('$\\Delta(P_2/P_t)$',fontsize=12) 
-axes.set_title('$\\Delta(P_2/P_t)$ vs $\\theta$',fontsize=14)
+axes.set_ylabel('$\\Delta P$',fontsize=12) 
+axes.set_title('$\\Delta P$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig3.savefig("dP2_theta.pdf")
+fig3.savefig("ex_nicfd_dP2_theta.pdf")

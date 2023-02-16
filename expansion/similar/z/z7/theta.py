@@ -102,15 +102,18 @@ for i in range(50):
 """
 2. plot
 """
+n = 10
+colors = plt.cm.tab20(np.linspace(0, 1, n))
+
 fig1 = plt.figure( dpi=300)
 lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Z71")
-axes.plot(theta/math.pi*180  , z2_m2 , 'r', lw=lwh, label="Z72")
-axes.plot(theta/math.pi*180  , z3_m2 , 'b', lw=lwh, label="Z73")
-axes.plot(theta/math.pi*180  , z4_m2 , 'k--', lw=lwh, label="Z74")
-axes.plot(theta/math.pi*180  , z5_m2 , 'r--', lw=lwh, label="Z75")
-axes.plot(theta/math.pi*180  , z6_m2 , 'b--', lw=lwh, label="Z76")
+axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], lw=lwh, label="Z71")
+axes.plot(theta/math.pi*180  , z2_m2 , color=colors[1], lw=lwh, label="Z72")
+axes.plot(theta/math.pi*180  , z3_m2 , color=colors[2], lw=lwh, label="Z73")
+axes.plot(theta/math.pi*180  , z4_m2 , color=colors[3], lw=lwh, label="Z74")
+axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="Z75")
+axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], lw=lwh, label="Z76")
 
 ax2 = axes.twinx()
 ax2.plot(theta/math.pi*180  , diff , 'k*', lw=lwh)
@@ -120,7 +123,7 @@ ax2.set_ylabel('$\\Delta M_2$(%)',fontsize=12)
 axes.set_xlabel('$\\theta$(degree)',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('$Z_t = 0.7$',fontsize=14)
-axes.legend(loc=0 , prop={'size': 10}) # 
+axes.legend(loc=4 , prop={'size': 10}) # 
 fig1.savefig("z7_M2_theta.pdf")
 
 

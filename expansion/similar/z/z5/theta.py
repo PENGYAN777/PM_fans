@@ -102,15 +102,19 @@ for i in range(50):
 """
 2. plot
 """
+
+n = 10
+colors = plt.cm.tab20(np.linspace(0, 1, n))
+
 fig1 = plt.figure( dpi=300)
 lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Z51")
-axes.plot(theta/math.pi*180  , z2_m2 , 'r', lw=lwh, label="Z52")
-axes.plot(theta/math.pi*180  , z3_m2 , 'b', lw=lwh, label="Z53")
-axes.plot(theta/math.pi*180  , z4_m2 , 'k--', lw=lwh, label="Z54")
-axes.plot(theta/math.pi*180  , z5_m2 , 'r--', lw=lwh, label="Z55")
-axes.plot(theta/math.pi*180  , z6_m2 , 'b--', lw=lwh, label="Z56")
+axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], lw=lwh, label="Z51")
+axes.plot(theta/math.pi*180  , z2_m2 , color=colors[1], lw=lwh, label="Z52")
+axes.plot(theta/math.pi*180  , z3_m2 , color=colors[2], lw=lwh, label="Z53")
+axes.plot(theta/math.pi*180  , z4_m2 , color=colors[3], lw=lwh, label="Z54")
+axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="Z55")
+axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], lw=lwh, label="Z56")
 
 ax2 = axes.twinx()
 ax2.plot(theta/math.pi*180  , diff , 'k*', lw=lwh)
