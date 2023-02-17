@@ -52,7 +52,7 @@ plt.text(0.6, -0.2, '$M_2$', rotation = -30,ha= 'center')
 
 axes.set_aspect('equal', 'box')
 plt.axis('off')
-fig1.savefig("shock.pdf")
+fig1.savefig("geo_ex.pdf")
 
 fig2 = plt.figure( dpi=300)
 axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
@@ -86,4 +86,4 @@ plt.text(0.7, -0.2, '$M_2$', rotation = -30,ha= 'center')
 
 axes.set_aspect('equal', 'box')
 plt.axis('off')
-fig2.savefig("turning.pdf")
+fig2.savefig("geo_turning.pdf")
