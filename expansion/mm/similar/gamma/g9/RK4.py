@@ -22,7 +22,7 @@ def f2(v,T,M):
 
 def f3(v,T):
     P = CP.CoolProp.PropsSI('P','T',T,'Dmass',1/v,fluidname ) 
-    return  -T/CP.CoolProp.PropsSI('Cvmass','T',T,'Dmass',1/v,"Toluene")* CP.CoolProp.PropsSI('d(P)/d(T)|Dmass','P',P,'T',T,fluidname )
+    return  -T/CP.CoolProp.PropsSI('Cvmass','T',T,'Dmass',1/v,fluidname)* CP.CoolProp.PropsSI('d(P)/d(T)|Dmass','P',P,'T',T,fluidname )
 
 def rk4(v0,vn,t0,m0,nu0,n):
     dv = (vn-v0)/n          # estep Delta v

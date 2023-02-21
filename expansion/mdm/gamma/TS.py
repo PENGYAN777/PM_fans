@@ -73,25 +73,30 @@ plt.axhline(Tc, dashes = [2, 2])
 """
 test points
 """
-z9_p = [4.23e5, 3.83e5, 3.43e5, 3.03e5, 2.63e5, 2.23e5, ]
-z9_t = [574.29, 558.44, 544.84, 528.00, 509.07, 488.08, ]
+z9_p = [4.23e5, 3.80e5, 3.38e5, 2.96e5,  2.53e5, 2.11e5, ]
+z9_t = [569.88, 552.99, 539.66, 520.32, 500.76, 478.09, ]
 z9_s = CP.CoolProp.PropsSI('Smass','P',z9_p,'T',z9_t,fluidname)
 plt.plot(z9_s,z9_t,'ko',lw = lw)
 
-z8_p = [7.75e5, 6.91e5,  6.55e5, 5.95e5, 5.35e5, 4.75e5]
-z8_t = [574.29, 558.44,  551.50,  538.87, 524.85, 509.77]
+z8_p = [7.05e5, 6.34e5, 5.64e5,4.93e5, 4.23e5,  3.52e5, ]
+z8_t = [569.88,  557.44, 543.44, 527.43, 508.98, 486.98, ]
 z8_s = CP.CoolProp.PropsSI('Smass','P',z8_p,'T',z8_t,fluidname)
 plt.plot(z8_s,z8_t,'ro',lw = lw)
 
-z7_p = [1.05e6, 1.00e6, 9.47e5, 8.92e5, 8.37e5, 7.82e5]
-z7_t = [573.59, 569.74, 558.45, 552.20, 544.13, 535.72]
+z7_p = [9.16e5, 8.178e5, 7.75e5, 7.05e5,6.34e5,  5.64e5, ]
+z7_t = [570.55, 558.45, 552.99, 542.32, 530.54, 517.21, ]
 z7_s = CP.CoolProp.PropsSI('Smass','P',z7_p,'T',z7_t,fluidname)
 plt.plot(z7_s,z7_t,'bo',lw = lw)
 
-# z6_p = [5e6, 4.3e6,  3.6e6, 2.9e6, 2.2e6, 1.5e6]
-# z6_t = [619.38, 612.27, 599.69, 581.08, 553.733, 511.60]
-# z6_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
-# plt.plot(z6_s,z6_t,'k*',lw = lw)
+z6_p = [1.128e6, 9.588e5, 9.16e5, 8.74e5, 7.89e5,  7.05e5, ]
+z6_t = [573.89, 558.45,  554.99, 550.10,  539.66, 527.43, ]
+z6_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
+plt.plot(z6_s,z6_t,'k*',lw = lw)
+
+z5_p = [1.27e6, 1.226e6, 1.057e6, 1.015e6, 9.306e5,  8.46e5, ]
+z5_t = [572.33,  570.11, 558.45, 554.99, 546.77, 539.43, ]
+z5_s = CP.CoolProp.PropsSI('Smass','P',z5_p,'T',z5_t,fluidname)
+plt.plot(z5_s,z5_t,'r*',lw = lw)
 
 
 plt.ylim(400,Tmax)
@@ -101,5 +106,5 @@ plt.xlabel('Entropy [J/K]')
 plt.ylabel('Temperature [K]')
 plt.title('Contour of Z and $\Gamma$ for siloxane MDM')
 plt.tight_layout()
-fig.savefig("files/mdm_Contour_TS.pdf")
+fig.savefig("files/mdm_g_Contour_TS.pdf")
 print("plotcontour.py called")

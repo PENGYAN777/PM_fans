@@ -118,7 +118,7 @@ axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], lw=lwh, label="Z66")
 ax2 = axes.twinx()
 ax2.plot(theta/math.pi*180  , diff , 'k*', lw=lwh)
 ax2.set_ylabel('$\\Delta M_2$(%)',fontsize=12)
-
+ax2.set_ylim([0, 3])
 
 axes.set_xlabel('$\\theta$(degree)',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 

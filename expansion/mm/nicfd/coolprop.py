@@ -41,12 +41,12 @@ dc = CP.CoolProp.PropsSI('Dmass','P',Pc,'T',Tc,fluidname)
 """
 
 
-# pt = Pc*0.8 # total pressure
-# zt = 0.8
+pt = Pc*0.8 # total pressure
+zt = 0.9
 # pt = Pc*1.1 # total pressure
-# zt = 0.6
-pt = Pc*1.2 # total pressure
-zt = 0.4
+# zt = 0.7
+# pt = Pc*1.2 # total pressure
+# zt = 0.5
 tt,gt = TGfromZP(zt,pt)
 dt = CP.CoolProp.PropsSI('Dmass','P',pt,'T',tt,fluidname) 
 s = CP.CoolProp.PropsSI('Smass','P',pt,'T',tt,fluidname) 
@@ -106,11 +106,11 @@ pp = np.zeros(t.size) # Gamma
 for i in t.index:
     pp[i] = CP.CoolProp.PropsSI('P','T',t[i]*tt,'Dmass',D[i]*dt,fluidname)/pt
 
-pd.DataFrame(pp).to_csv('z4.csv', index_label = "Index", header  = ['pressure']) 
-data = pd.read_csv("z4.csv", ",")
+pd.DataFrame(pp).to_csv('z9.csv', index_label = "Index", header  = ['pressure']) 
+data = pd.read_csv("z9.csv", ",")
 # append new columns
 D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu})
 newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")
-newData.to_csv("z4.csv")
+newData.to_csv("z9.csv")
