@@ -92,8 +92,12 @@ Pstar = p[np.argmin(abs(m-1))]
 """
 4. compute data 
 """
-V,T,M,nu = rk4(vstar, 10*vstar, Tstar, 1, 0, 1000)
-
+# # z1, z2, z3, z4
+# V,T,M,nu = rk4(vstar, 5*vstar, Tstar, 1, 0, 1000)
+# # z5
+# V,T,M,nu = rk4(vstar, 3*vstar, Tstar, 1, 0, 1000)
+# z6
+V,T,M,nu = rk4(vstar, 1.5*vstar, Tstar, 1, 0, 1000)
 """
 5. write into csv file
 """    
