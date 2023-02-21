@@ -27,7 +27,7 @@ def f3(v,T):
     if abs(T-Tc)<0.01*Tc:
         T = 0.99*Tc
     P = CP.CoolProp.PropsSI('P','T',T,'Dmass',1/v,fluidname ) 
-    return  -T/CP.CoolProp.PropsSI('Cvmass','T',T,'Dmass',1/v,"Toluene")* CP.CoolProp.PropsSI('d(P)/d(T)|Dmass','P',P,'T',T,fluidname )
+    return  -T/CP.CoolProp.PropsSI('Cvmass','T',T,'Dmass',1/v,fluidname)* CP.CoolProp.PropsSI('d(P)/d(T)|Dmass','P',P,'T',T,fluidname )
 
 def rk4(v0,vn,t0,m0,nu0,n):
     dv = (vn-v0)/n          # estep Delta v

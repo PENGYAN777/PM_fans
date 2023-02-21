@@ -39,8 +39,8 @@ print("critical pressure[Pa]:", Pc)
 """
 1. input sonic conditions
 """
-
-ps = 0.9*Pc - 0.06*Pc*4# sonic pressure
+# 0, 0.5, 2.5, 3, 3.5, 5
+ps = 0.9*Pc - 0.06*Pc*5# sonic pressure
 gs = 0.5 # sonic Gamma
 zs, ts = ZTfromPG(ps,gs)
 ds = CP.CoolProp.PropsSI('Dmass','P',ps,'T',ts,fluidname) 
@@ -66,11 +66,11 @@ for i in t.index:
         t[i] = 0.99*Tc
     pp[i] = CP.CoolProp.PropsSI('P','T',t[i],'Dmass',D[i],fluidname)
 
-pd.DataFrame(pp).to_csv('z5.csv', index_label = "Index", header  = ['pressure']) 
-data = pd.read_csv("z5.csv", ",")
+pd.DataFrame(pp).to_csv('z6.csv', index_label = "Index", header  = ['pressure']) 
+data = pd.read_csv("z6.csv", ",")
 # append new columns
 D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu})
 newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")
-newData.to_csv("z5.csv")
+newData.to_csv("z6.csv")
