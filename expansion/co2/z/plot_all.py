@@ -44,19 +44,19 @@ z64= pd.read_csv("z6/z4.csv", ",", skiprows=0)
 z65= pd.read_csv("z6/z5.csv", ",", skiprows=0)
 z66= pd.read_csv("z6/z6.csv", ",", skiprows=0)
 
-z51= pd.read_csv("z5/z1.csv", ",", skiprows=0)
-z52= pd.read_csv("z5/z2.csv", ",", skiprows=0)
-z53= pd.read_csv("z5/z3.csv", ",", skiprows=0)
-z54= pd.read_csv("z5/z4.csv", ",", skiprows=0)
-z55= pd.read_csv("z5/z5.csv", ",", skiprows=0)
-z56= pd.read_csv("z5/z6.csv", ",", skiprows=0)
+# z51= pd.read_csv("z5/z1.csv", ",", skiprows=0)
+# z52= pd.read_csv("z5/z2.csv", ",", skiprows=0)
+# z53= pd.read_csv("z5/z3.csv", ",", skiprows=0)
+# z54= pd.read_csv("z5/z4.csv", ",", skiprows=0)
+# z55= pd.read_csv("z5/z5.csv", ",", skiprows=0)
+# z56= pd.read_csv("z5/z6.csv", ",", skiprows=0)
 
 
 
 """
 1. input theta and upstream Mach number, compute downstream data
 """
-n = 50
+n = 30
 """
 Z9
 """
@@ -72,7 +72,7 @@ z94_m2 = np.zeros(n)
 z95_m2 = np.zeros(n) 
 z96_m2 = np.zeros(n) 
 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -120,7 +120,7 @@ z84_m2 = np.zeros(n)
 z85_m2 = np.zeros(n) 
 z86_m2 = np.zeros(n) 
 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -167,7 +167,7 @@ z73_m2 = np.zeros(n)
 z74_m2 = np.zeros(n) 
 z75_m2 = np.zeros(n) 
 z76_m2 = np.zeros(n) 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -214,7 +214,7 @@ z63_m2 = np.zeros(n)
 z64_m2 = np.zeros(n) 
 z65_m2 = np.zeros(n) 
 z66_m2 = np.zeros(n) 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -251,50 +251,50 @@ for i in range(50):
 """
 Z5
 """    
-theta = np.zeros(n) # rad
-smallest = np.zeros(n) # min
-largest = np.zeros(n) # max
-diff = np.zeros(n) # diff
+# theta = np.zeros(n) # rad
+# smallest = np.zeros(n) # min
+# largest = np.zeros(n) # max
+# diff = np.zeros(n) # diff
 
-z51_m2 = np.zeros(n) 
-z52_m2 = np.zeros(n) 
-z53_m2 = np.zeros(n) 
-z54_m2 = np.zeros(n) 
-z55_m2 = np.zeros(n) 
-z56_m2 = np.zeros(n) 
-for i in range(50):
-    theta[i] = i*math.pi/180 # rad
-    M1 = 1.0 # upstream Mach number
-    # for z1
-    nu1 = z51.iloc[:,6][np.argmin(abs(z51.iloc[:,5]-M1))] 
-    nu2 = nu1 + theta[i]
-    M2 = z51.iloc[:,5][np.argmin(abs(z51.iloc[:,6]-nu2))] 
-    z51_m2[i] = M2
-    # for z2
-    nu1 = z52.iloc[:,6][np.argmin(abs(z52.iloc[:,5]-M1))] 
-    nu2 = nu1 + theta[i]
-    M2 = z52.iloc[:,5][np.argmin(abs(z52.iloc[:,6]-nu2))] 
-    z52_m2[i] = M2
-    # for z3
-    nu1 = z53.iloc[:,6][np.argmin(abs(z53.iloc[:,5]-M1))] 
-    nu2 = nu1 + theta[i]
-    M2 = z53.iloc[:,5][np.argmin(abs(z53.iloc[:,6]-nu2))] 
-    z53_m2[i] = M2
-    # for z4
-    nu1 = z54.iloc[:,6][np.argmin(abs(z54.iloc[:,5]-M1))] 
-    nu2 = nu1 + theta[i]
-    M2 = z54.iloc[:,5][np.argmin(abs(z54.iloc[:,6]-nu2))] 
-    z54_m2[i] = M2
-    # for z5
-    nu1 = z55.iloc[:,6][np.argmin(abs(z55.iloc[:,5]-M1))] 
-    nu2 = nu1 + theta[i]
-    M2 = z55.iloc[:,5][np.argmin(abs(z55.iloc[:,6]-nu2))] 
-    z55_m2[i] = M2
-    # for z6
-    nu1 = z56.iloc[:,6][np.argmin(abs(z56.iloc[:,5]-M1))] 
-    nu2 = nu1 + theta[i]
-    M2 = z56.iloc[:,5][np.argmin(abs(z56.iloc[:,6]-nu2))] 
-    z56_m2[i] = M2
+# z51_m2 = np.zeros(n) 
+# z52_m2 = np.zeros(n) 
+# z53_m2 = np.zeros(n) 
+# z54_m2 = np.zeros(n) 
+# z55_m2 = np.zeros(n) 
+# z56_m2 = np.zeros(n) 
+# for i in range(n):
+#     theta[i] = i*math.pi/180 # rad
+#     M1 = 1.0 # upstream Mach number
+#     # for z1
+#     nu1 = z51.iloc[:,6][np.argmin(abs(z51.iloc[:,5]-M1))] 
+#     nu2 = nu1 + theta[i]
+#     M2 = z51.iloc[:,5][np.argmin(abs(z51.iloc[:,6]-nu2))] 
+#     z51_m2[i] = M2
+#     # for z2
+#     nu1 = z52.iloc[:,6][np.argmin(abs(z52.iloc[:,5]-M1))] 
+#     nu2 = nu1 + theta[i]
+#     M2 = z52.iloc[:,5][np.argmin(abs(z52.iloc[:,6]-nu2))] 
+#     z52_m2[i] = M2
+#     # for z3
+#     nu1 = z53.iloc[:,6][np.argmin(abs(z53.iloc[:,5]-M1))] 
+#     nu2 = nu1 + theta[i]
+#     M2 = z53.iloc[:,5][np.argmin(abs(z53.iloc[:,6]-nu2))] 
+#     z53_m2[i] = M2
+#     # for z4
+#     nu1 = z54.iloc[:,6][np.argmin(abs(z54.iloc[:,5]-M1))] 
+#     nu2 = nu1 + theta[i]
+#     M2 = z54.iloc[:,5][np.argmin(abs(z54.iloc[:,6]-nu2))] 
+#     z54_m2[i] = M2
+#     # for z5
+#     nu1 = z55.iloc[:,6][np.argmin(abs(z55.iloc[:,5]-M1))] 
+#     nu2 = nu1 + theta[i]
+#     M2 = z55.iloc[:,5][np.argmin(abs(z55.iloc[:,6]-nu2))] 
+#     z55_m2[i] = M2
+#     # for z6
+#     nu1 = z56.iloc[:,6][np.argmin(abs(z56.iloc[:,5]-M1))] 
+#     nu2 = nu1 + theta[i]
+#     M2 = z56.iloc[:,5][np.argmin(abs(z56.iloc[:,6]-nu2))] 
+#     z56_m2[i] = M2
 
 """
 2. plot
@@ -334,19 +334,19 @@ axes.plot(theta/math.pi*180  , z64_m2 , color=colors[3], lw=lwh)
 axes.plot(theta/math.pi*180  , z65_m2 , color=colors[3], lw=lwh)
 axes.plot(theta/math.pi*180  , z66_m2 , color=colors[3], lw=lwh)
 
-axes.plot(theta/math.pi*180  , z51_m2 , color=colors[4], lw=lwh, label="$Z_t=0.5$")
-axes.plot(theta/math.pi*180  , z52_m2 , color=colors[4], lw=lwh)
-axes.plot(theta/math.pi*180  , z53_m2 , color=colors[4], lw=lwh)
-axes.plot(theta/math.pi*180  , z54_m2 , color=colors[4], lw=lwh)
-axes.plot(theta/math.pi*180  , z55_m2 , color=colors[4], lw=lwh)
-axes.plot(theta/math.pi*180  , z56_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z51_m2 , color=colors[4], lw=lwh, label="$Z_t=0.5$")
+# axes.plot(theta/math.pi*180  , z52_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z53_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z54_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z55_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z56_m2 , color=colors[4], lw=lwh)
 
 
 axes.set_xlabel('$\\theta$(degree)',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("mdm_z_M2_theta.pdf")
+fig1.savefig("co2_z_M2_theta.pdf")
 
 
 
