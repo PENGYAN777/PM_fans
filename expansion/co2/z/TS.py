@@ -73,20 +73,20 @@ plt.axhline(Tc, dashes = [2, 2])
 """
 test points
 """
-# z9_p = [1.328e7, 1.1e7, 8.70e6, 6.418e6, 4.13e6,  1.84e6, ]
-# z9_t = [478.04, 464.05,  443.06, 415.07, 373.08, 296.11, ]
-# z9_s = CP.CoolProp.PropsSI('Smass','P',z9_p,'T',z9_t,fluidname)
-# plt.plot(z9_s,z9_t,'ko',lw = lw)
+z9_p = [1.328e7, 1.18e7, 1.03e7, 8.85e6, 7.37e6, 5.9e6, ]
+z9_t = [478.04, 471.05, 460.55,  446.559, 429.06, 408.07,]
+z9_s = CP.CoolProp.PropsSI('Smass','P',z9_p,'T',z9_t,fluidname)
+plt.plot(z9_s,z9_t,'ko',lw = lw)
 
-# z8_p = [1.328e7, 1.106e7, 8.85e6, 6.64e6, 4.426e6,  3.98e6, ]
-# z8_t = [415.07, 401.07, 380.08, 355.59, 320.60, 310.11, ]
-# z8_s = CP.CoolProp.PropsSI('Smass','P',z8_p,'T',z8_t,fluidname)
-# plt.plot(z8_s,z8_t,'ro',lw = lw)
+z8_p = [1.328e7,  1.18e7, 1.03e7, 8.85e6, 7.377e6, 5.9e6, ]
+z8_t = [415.07, 404.57, 394.07, 380.08, 366.08, 345.09, ]
+z8_s = CP.CoolProp.PropsSI('Smass','P',z8_p,'T',z8_t,fluidname)
+plt.plot(z8_s,z8_t,'ro',lw = lw)
 
 # z7_p = [1.328e7, 1.18e7, 1.03e7, 8.85e6, 7.39e6, 5.90e6, ]
 # z7_t = [380.08, 369.58, 362.59, 348.58, 334.60, 317.10,  ]
 # z7_s = CP.CoolProp.PropsSI('Smass','P',z7_p,'T',z7_t,fluidname)
-plt.plot(z7_s,z7_t,'bo',lw = lw)
+# plt.plot(z7_s,z7_t,'bo',lw = lw)
 
 # z6_p = [1.269e6,1.22e6, 1.13e6, 1.11e6,  1.07e6, 1.02e6]
 # z6_t = [572.89, 569.74, 558.45, 557.11,  552.90, 547.29]

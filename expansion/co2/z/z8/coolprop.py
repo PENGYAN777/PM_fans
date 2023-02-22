@@ -41,7 +41,7 @@ print("critical pressure[Pa]:", Pc)
 
 
 pt = Pc*1.8 - Pc*0.2*5# total pressure
-zt = 0.9
+zt = 0.8
 # pt = Pc*1.1 # total pressure
 # zt = 0.6
 # pt = Pc*1.2 # total pressure
@@ -54,7 +54,7 @@ ht = CP.CoolProp.PropsSI('Hmass','P',pt,'T',tt,fluidname)
 2. compute isentropic relationship
 """
 
-p = np.linspace(Pc*0.1,pt,1000) # P<Pc
+p = np.linspace(Pc*0.3,pt,1000) # P<Pc
 
 p = pd.Series(p)
 Z = np.zeros(p.size) # P/rho RT
@@ -92,14 +92,10 @@ Pstar = p[np.argmin(abs(m-1))]
 """
 4. compute data 
 """
-# z1, z2
-# V,T,M,nu = rk4(vstar, 8*vstar, Tstar, 1, 0, 1000)
-# # z3,z4
-# V,T,M,nu = rk4(vstar, 7*vstar, Tstar, 1, 0, 1000)
-# # z5
-# V,T,M,nu = rk4(vstar, 6*vstar, Tstar, 1, 0, 1000)
-# z6
-V,T,M,nu = rk4(vstar, 5*vstar, Tstar, 1, 0, 1000)
+# z1
+# V,T,M,nu = rk4(vstar, 10*vstar, Tstar, 1, 0, 1000)
+# z2, z3, z4, z5, z6
+V,T,M,nu = rk4(vstar, 8*vstar, Tstar, 1, 0, 1000)
 """
 5. write into csv file
 """    

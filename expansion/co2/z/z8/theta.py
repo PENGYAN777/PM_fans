@@ -28,7 +28,7 @@ z6= pd.read_csv("z6.csv", ",", skiprows=0)
 """
 1. input theta and upstream Mach number, compute downstream data
 """
-n = 50
+n = 30
 theta = np.zeros(n) # rad
 smallest = np.zeros(n) # min
 largest = np.zeros(n) # max
@@ -48,7 +48,7 @@ z6_m2 = np.zeros(n)
 
 
 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -89,8 +89,8 @@ for i in range(50):
     z6_m2[i] = M2
     
     
-    smallest[i] = min([z1_m2[i],z2_m2[i],z3_m2[i],z4_m2[i],z5_m2[i], z6_m2[i] ])
-    largest[i] = max([z1_m2[i],z2_m2[i],z3_m2[i],z4_m2[i],z5_m2[i], z6_m2[i] ])
+    smallest[i] = min([z1_m2[i],z2_m2[i],z3_m2[i],z4_m2[i],z5_m2[i] ,z6_m2[i]  ])
+    largest[i] = max([z1_m2[i],z2_m2[i],z3_m2[i],z4_m2[i],z5_m2[i] ,z6_m2[i]  ])
     diff[i] = (largest[i]-smallest[i])/largest[i] * 100
 
 
@@ -107,40 +107,23 @@ colors = plt.cm.tab20(np.linspace(0, 1, nc))
 fig1 = plt.figure( dpi=300)
 lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], lw=lwh, label="Z91")
-axes.plot(theta/math.pi*180  , z2_m2 , color=colors[1], lw=lwh, label="Z92")
-axes.plot(theta/math.pi*180  , z3_m2 , color=colors[2], lw=lwh, label="Z93")
-axes.plot(theta/math.pi*180  , z4_m2 , color=colors[3], lw=lwh, label="Z94")
-axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="Z95")
-axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], lw=lwh, label="Z96")
+axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], lw=lwh, label="Z81")
+axes.plot(theta/math.pi*180  , z2_m2 , color=colors[1], lw=lwh, label="Z82")
+axes.plot(theta/math.pi*180  , z3_m2 , color=colors[2], lw=lwh, label="Z83")
+axes.plot(theta/math.pi*180  , z4_m2 , color=colors[3], lw=lwh, label="Z84")
+axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="Z85")
+axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], lw=lwh, label="Z86")
 
 ax2 = axes.twinx()
 ax2.plot(theta/math.pi*180  , diff , 'k*', lw=lwh)
 ax2.set_ylabel('$\\Delta M_2$(%)',fontsize=12)
-
-
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
-axes.set_ylabel('$M_2$',fontsize=12) 
-axes.set_title('$Z_t = 0.9$',fontsize=14)
-axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("z9_M2_theta.pdf")
-
-###############################
-x = [5, 10, ]
-y = [1.225, 1.35, ]
-
-fig2 = plt.figure( dpi=300)
-lwh = 2
-axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Exact")
-axes.plot(x  , y , 'ko', lw=lwh, label="CFD")
-
+# ax2.set_ylim([0,3])
 
 axes.set_xlabel('$\\theta$(degree)',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
-axes.set_title('Exact solutions vs CFD results',fontsize=14)
-axes.legend(loc=0 , prop={'size': 10}) # 
-fig2.savefig("cfd_mm_z9.pdf")
+axes.set_title('$Z_t = 0.8$',fontsize=14)
+axes.legend(loc=4 , prop={'size': 10}) # 
+fig1.savefig("co2_z8_M2_theta.pdf")
 
 
 
