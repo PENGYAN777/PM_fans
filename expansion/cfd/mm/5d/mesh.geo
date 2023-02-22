@@ -2,7 +2,7 @@
 
 // GEOMETRY DEFINITION
 
-h = 0.05;
+h = 0.02;
 theta = 5*Pi/180;
 
 // POINTS
