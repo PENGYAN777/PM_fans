@@ -93,10 +93,10 @@ z6_t = [359.09, 352.09, 341.59, 331.10, 324.10, 310.10,  ]
 z6_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
 plt.plot(z6_s,z6_t,'k*',lw = lw)
 
-# z5_p = [1.396e6, 1.38e6, 1.24e6, 1.22e6, 1.21e6, 1.18e6, ]
-# z5_t = [570.44, 569.74, 558.16, 556.76, 555.71, 553.25, ]
-# z5_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
-# plt.plot(z5_s,z5_t,'k*',lw = lw)
+z5_p = [1.328e7,  1.18e7, 1.03e7, 8.85e6, 8.11e6, 7.02e6, ]
+z5_t = [345.09, 338.09, 331.10, 320.60, 313.606+1, 306.61-1,  ]
+z5_s = CP.CoolProp.PropsSI('Smass','P',z5_p,'T',z5_t,fluidname)
+plt.plot(z5_s,z5_t,'r*',lw = lw)
 
 plt.ylim(250,550)
 # plt.gca().set_yscale('log')
