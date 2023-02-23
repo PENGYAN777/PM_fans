@@ -147,11 +147,11 @@ axes.plot(theta/math.pi*180  , z6_m2 , color=colors[3], lw=lwh, label="$Z_t = 0.
 axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="$Z_t = 0.5$")
 axes.plot(theta/math.pi*180  , z4_m2 , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
 
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('$M_2$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("ex_nicfd_M2_theta.pdf")
+fig1.savefig("mm_nicfd_M2_theta.pdf")
 
 fig2 = plt.figure( dpi=300)
 lwh = 2
@@ -164,11 +164,11 @@ axes.plot(theta/math.pi*180  , z5_P2 , color=colors[4], lw=lwh, label="$Z_t = 0.
 axes.plot(theta/math.pi*180  , z4_P2 , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
 
 
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$P_2/P_t$',fontsize=12) 
 axes.set_title('$P_2/P_t$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig2.savefig("ex_nicfd_P2_theta.pdf")
+fig2.savefig("mm_nicfd_P2_theta.pdf")
 
 """
 3. plot Delat P
@@ -199,8 +199,8 @@ axes.plot(theta/math.pi*180 ,  diff_z6 , color=colors[3], lw=lwh, label="$Z_t = 
 axes.plot(theta/math.pi*180 ,  diff_z5 , color=colors[4], lw=lwh, label="$Z_t = 0.5$")
 axes.plot(theta/math.pi*180 ,  diff_z4 , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
 
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$\\Delta P$',fontsize=12) 
 axes.set_title('$\\Delta P$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig3.savefig("ex_nicfd_dP2_theta.pdf")
+fig3.savefig("mm_nicfd_dP2_theta.pdf")

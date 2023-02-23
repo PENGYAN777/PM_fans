@@ -107,25 +107,25 @@ colors = plt.cm.tab20(np.linspace(0, 1, nc))
 fig1 = plt.figure( dpi=300)
 lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], lw=lwh, label="Z91")
-axes.plot(theta/math.pi*180  , z2_m2 , color=colors[1], lw=lwh, label="Z92")
-axes.plot(theta/math.pi*180  , z3_m2 , color=colors[2], lw=lwh, label="Z93")
-axes.plot(theta/math.pi*180  , z4_m2 , color=colors[3], lw=lwh, label="Z94")
-axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="Z95")
-axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], lw=lwh, label="Z96")
+axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], alpha=0.1, lw=lwh, label="Z91")
+axes.plot(theta/math.pi*180  , z2_m2 , color=colors[0], alpha=0.2,lw=lwh, label="Z92")
+axes.plot(theta/math.pi*180  , z3_m2 , color=colors[0], alpha=0.3, lw=lwh, label="Z93")
+axes.plot(theta/math.pi*180  , z4_m2 , color=colors[0], alpha=0.4, lw=lwh, label="Z94")
+axes.plot(theta/math.pi*180  , z5_m2 , color=colors[0], alpha=0.5, lw=lwh, label="Z95")
+axes.plot(theta/math.pi*180  , z6_m2 , color=colors[0], alpha=0.6, lw=lwh, label="Z96")
 
 ax2 = axes.twinx()
 ax2.plot(theta/math.pi*180  , diff , 'k*', lw=lwh)
 ax2.set_ylabel('$\\Delta M_2$(%)',fontsize=12)
 
 
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("z9_M2_theta.pdf")
+fig1.savefig("mm_z9_M2_theta.pdf")
 
-###############################
+############################## fig 2
 x = [5, 10, 15, 20, 25, 30, 35, 40, 45, 48, ]
 y = [1.225, 1.35, 1.48, 1.57, 1.67, 1.80, 1.89, 1.99, 2.10, 2.16, ]
 
@@ -136,7 +136,7 @@ axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Exact")
 axes.plot(x  , y , 'ko', lw=lwh, label="CFD")
 
 
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('Exact solutions vs CFD results',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 

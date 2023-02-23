@@ -73,30 +73,33 @@ plt.axhline(Tc, dashes = [2, 2])
 """
 test points
 """
+nc = 10
+colors = plt.cm.tab20(np.linspace(0, 1, nc))
+
 z9_p = [4.23e5, 3.83e5, 3.43e5, 3.03e5, 2.63e5, 2.23e5, ]
 z9_t = [574.29, 558.44, 544.84, 528.00, 509.07, 488.08, ]
 z9_s = CP.CoolProp.PropsSI('Smass','P',z9_p,'T',z9_t,fluidname)
-plt.plot(z9_s,z9_t,'ko',lw = lw)
+plt.plot(z9_s,z9_t,'o' ,color=colors[0],lw = lw)
 
 z8_p = [7.75e5, 6.91e5,  6.55e5, 5.95e5, 5.35e5, 4.75e5]
 z8_t = [574.29, 558.44,  551.50,  538.87, 524.85, 509.77]
 z8_s = CP.CoolProp.PropsSI('Smass','P',z8_p,'T',z8_t,fluidname)
-plt.plot(z8_s,z8_t,'ro',lw = lw)
+plt.plot(z8_s,z8_t,'o' ,color=colors[1],lw = lw)
 
 z7_p = [1.05e6, 1.00e6, 9.47e5, 8.92e5, 8.37e5, 7.82e5]
 z7_t = [573.59, 569.74, 558.45, 552.20, 544.13, 535.72]
 z7_s = CP.CoolProp.PropsSI('Smass','P',z7_p,'T',z7_t,fluidname)
-plt.plot(z7_s,z7_t,'bo',lw = lw)
+plt.plot(z7_s,z7_t,'o' ,color=colors[2],lw = lw)
 
 z6_p = [1.269e6,1.22e6, 1.13e6, 1.11e6,  1.07e6, 1.02e6]
 z6_t = [572.89, 569.74, 558.45, 557.11,  552.90, 547.29]
 z6_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
-plt.plot(z6_s,z6_t,'k*',lw = lw)
+plt.plot(z6_s,z6_t,'o' ,color=colors[3],lw = lw)
 
 z5_p = [1.396e6, 1.38e6, 1.24e6, 1.22e6, 1.21e6, 1.18e6, ]
 z5_t = [570.44, 569.74, 558.16, 556.76, 555.71, 553.25, ]
 z5_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
-plt.plot(z5_s,z5_t,'k*',lw = lw)
+plt.plot(z5_s,z5_t,'o' ,color=colors[4],lw = lw)
 
 plt.ylim(400,Tmax)
 # plt.gca().set_yscale('log')

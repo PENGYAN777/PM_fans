@@ -72,9 +72,12 @@ plt.axhline(pc, dashes = [2, 2])
 """
 test points
 """
+nc = 10
+colors = plt.cm.tab20(np.linspace(0, 1, nc))
+
 z9_p = [1.35e6, 2.04e6, 2.53e6, 2.84e6, 2.94e6, 2.89e6]
 z9_t = [604.06, 619.49, 616.75, 607.89, 595.31, 581.08]
-plt.plot(z9_t,z9_p,'ko',lw = lw)
+plt.plot(z9_t,z9_p,'o' ,color=colors[0], lw = lw)
 
 
 
@@ -85,5 +88,5 @@ plt.ylabel('Pressure [Pa]')
 plt.xlabel('Temperature [K]')
 plt.title('Contour of Z and $\Gamma$ for siloxane MM')
 plt.tight_layout()
-fig.savefig("files/Contour_PT.pdf")
+fig.savefig("files/mm_g_Contour_PT.pdf")
 print("plotcontour.py called")

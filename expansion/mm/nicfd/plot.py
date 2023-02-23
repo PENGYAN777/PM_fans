@@ -56,4 +56,4 @@ axes.set_xlabel('Mach',fontsize=12)
 axes.set_ylabel('$\\nu$',fontsize=12) 
 axes.set_title('$\\nu$ vs Mach number',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig2.savefig("ex_nicfd_Mach_nu.pdf")
+fig2.savefig("mm_nicfd_Mach_nu.pdf")

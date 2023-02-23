@@ -108,22 +108,22 @@ colors = plt.cm.tab20(np.linspace(0, 1, n))
 fig1 = plt.figure( dpi=300)
 lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], lw=lwh, label="G91")
-axes.plot(theta/math.pi*180  , z2_m2 , color=colors[1], lw=lwh, label="G92")
-axes.plot(theta/math.pi*180  , z3_m2 , color=colors[2], lw=lwh, label="G93")
-axes.plot(theta/math.pi*180  , z4_m2 , color=colors[3], lw=lwh, label="G94")
-axes.plot(theta/math.pi*180  , z5_m2 , color=colors[4], lw=lwh, label="G95")
-axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], lw=lwh, label="G96")
+axes.plot(theta/math.pi*180  , z1_m2 , color=colors[0], alpha=0.1, lw=lwh, label="G91")
+axes.plot(theta/math.pi*180  , z2_m2 , color=colors[0], alpha=0.2,lw=lwh, label="G92")
+axes.plot(theta/math.pi*180  , z3_m2 , color=colors[0], alpha=0.3, lw=lwh, label="G93")
+axes.plot(theta/math.pi*180  , z4_m2 , color=colors[0], alpha=0.4, lw=lwh, label="G94")
+axes.plot(theta/math.pi*180  , z5_m2 , color=colors[0], alpha=0.5, lw=lwh, label="G95")
+axes.plot(theta/math.pi*180  , z6_m2 , color=colors[0], alpha=0.6, lw=lwh, label="G96")
 
 ax2 = axes.twinx()
 ax2.plot(theta/math.pi*180  , diff , 'k*', lw=lwh)
 ax2.set_ylabel('$\\Delta M_2$(%)',fontsize=12)
 
 
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
-axes.set_title('$\\Gamma = 0.9$',fontsize=14)
+axes.set_title('$\\Gamma_1 = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("g9_M2_theta.pdf")
+fig1.savefig("mm_g9_M2_theta.pdf")
 
 
