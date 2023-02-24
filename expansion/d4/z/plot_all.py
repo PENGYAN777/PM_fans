@@ -51,6 +51,12 @@ z54= pd.read_csv("z5/z4.csv", ",", skiprows=0)
 z55= pd.read_csv("z5/z5.csv", ",", skiprows=0)
 z56= pd.read_csv("z5/z6.csv", ",", skiprows=0)
 
+z41= pd.read_csv("z4/z1.csv", ",", skiprows=0)
+z42= pd.read_csv("z4/z2.csv", ",", skiprows=0)
+z43= pd.read_csv("z4/z3.csv", ",", skiprows=0)
+z44= pd.read_csv("z4/z4.csv", ",", skiprows=0)
+z45= pd.read_csv("z4/z5.csv", ",", skiprows=0)
+z46= pd.read_csv("z4/z6.csv", ",", skiprows=0)
 
 
 """
@@ -297,6 +303,53 @@ for i in range(50):
     z56_m2[i] = M2
 
 """
+Z4
+"""    
+theta = np.zeros(n) # rad
+smallest = np.zeros(n) # min
+largest = np.zeros(n) # max
+diff = np.zeros(n) # diff
+
+z41_m2 = np.zeros(n) 
+z42_m2 = np.zeros(n) 
+z43_m2 = np.zeros(n) 
+z44_m2 = np.zeros(n) 
+z45_m2 = np.zeros(n) 
+z46_m2 = np.zeros(n) 
+for i in range(50):
+    theta[i] = i*math.pi/180 # rad
+    M1 = 1.0 # upstream Mach number
+    # for z1
+    nu1 = z41.iloc[:,6][np.argmin(abs(z41.iloc[:,5]-M1))] 
+    nu2 = nu1 + theta[i]
+    M2 = z41.iloc[:,5][np.argmin(abs(z41.iloc[:,6]-nu2))] 
+    z41_m2[i] = M2
+    # for z2
+    nu1 = z42.iloc[:,6][np.argmin(abs(z42.iloc[:,5]-M1))] 
+    nu2 = nu1 + theta[i]
+    M2 = z42.iloc[:,5][np.argmin(abs(z42.iloc[:,6]-nu2))] 
+    z42_m2[i] = M2
+    # for z3
+    nu1 = z43.iloc[:,6][np.argmin(abs(z43.iloc[:,5]-M1))] 
+    nu2 = nu1 + theta[i]
+    M2 = z43.iloc[:,5][np.argmin(abs(z43.iloc[:,6]-nu2))] 
+    z43_m2[i] = M2
+    # for z4
+    nu1 = z44.iloc[:,6][np.argmin(abs(z44.iloc[:,5]-M1))] 
+    nu2 = nu1 + theta[i]
+    M2 = z44.iloc[:,5][np.argmin(abs(z44.iloc[:,6]-nu2))] 
+    z44_m2[i] = M2
+    # for z5
+    nu1 = z45.iloc[:,6][np.argmin(abs(z45.iloc[:,5]-M1))] 
+    nu2 = nu1 + theta[i]
+    M2 = z45.iloc[:,5][np.argmin(abs(z45.iloc[:,6]-nu2))] 
+    z45_m2[i] = M2
+    # for z6
+    nu1 = z46.iloc[:,6][np.argmin(abs(z46.iloc[:,5]-M1))] 
+    nu2 = nu1 + theta[i]
+    M2 = z46.iloc[:,5][np.argmin(abs(z46.iloc[:,6]-nu2))] 
+    z46_m2[i] = M2
+"""
 2. plot
 """
 
@@ -341,12 +394,19 @@ axes.plot(theta/math.pi*180  , z54_m2 , color=colors[4], lw=lwh)
 axes.plot(theta/math.pi*180  , z55_m2 , color=colors[4], lw=lwh)
 axes.plot(theta/math.pi*180  , z56_m2 , color=colors[4], lw=lwh)
 
+axes.plot(theta/math.pi*180  , z41_m2 , color=colors[5], lw=lwh, label="$Z_t=0.4$")
+axes.plot(theta/math.pi*180  , z42_m2 , color=colors[5], lw=lwh)
+axes.plot(theta/math.pi*180  , z43_m2 , color=colors[5], lw=lwh)
+axes.plot(theta/math.pi*180  , z44_m2 , color=colors[5], lw=lwh)
+axes.plot(theta/math.pi*180  , z45_m2 , color=colors[5], lw=lwh)
+axes.plot(theta/math.pi*180  , z46_m2 , color=colors[5], lw=lwh)
 
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
+
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("mdm_z_M2_theta.pdf")
+fig1.savefig("d4_z_M2_theta.pdf")
 
 
 

@@ -402,11 +402,11 @@ axes.plot(theta/math.pi*180  , z45_m2 , color=colors[5], lw=lwh)
 axes.plot(theta/math.pi*180  , z46_m2 , color=colors[5], lw=lwh)
 
 
-axes.set_xlabel('$\\theta$(degree)',fontsize=12)
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("z_M2_theta.pdf")
+fig1.savefig("mm_z_M2_theta.pdf")
 
 
 
