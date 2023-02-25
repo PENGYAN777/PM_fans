@@ -406,7 +406,7 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("nButane_z_M2_theta.pdf")
+fig1.savefig("nPentane_z_M2_theta.pdf")
 
 
 

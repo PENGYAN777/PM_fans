@@ -23,7 +23,7 @@ from RK4 import rk4
 """
 0. fluid property
 """
-fluidname = "n-Butane"
+fluidname = "n-Pentane"
 print("Fluid name:", fluidname)
 R = CP.CoolProp.PropsSI("gas_constant",fluidname)
 print("universal gas constant:  J/mol/K", R)
