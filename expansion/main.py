@@ -12,7 +12,7 @@ import CoolProp as CP
 
 # compute active degree of freedom
 print("------------compute N-----------")
-fluidname = "oxygen"
+fluidname = "hydrogen"
 Pc = CP.CoolProp.PropsSI('Pcrit',fluidname)
 Tc = CP.CoolProp.PropsSI('Tcrit',fluidname)
 print("fluid name:", fluidname)
@@ -22,8 +22,10 @@ MW = CP.CoolProp.PropsSI('M',fluidname)
 print("molar mass:", MW)
 Rs = R/MW
 print("specific gas constant:", Rs)
-cv = CP.CoolProp.PropsSI('CVMASS','T', Tc, 'P', Pc*0.1,  fluidname)
-Z = CP.CoolProp.PropsSI('Z','T', Tc, 'P', Pc*0.1,  fluidname)
-print("Z = :", Z)
+n1 = 1.0
+n2 = 0.1
+cv = CP.CoolProp.PropsSI('CVMASS','T', Tc*n1, 'P', Pc*n2,  fluidname)
+Z = CP.CoolProp.PropsSI('Z','T', Tc*n1, 'P', Pc*n2,  fluidname)
+print("Z = :", Z)   
 N = 2*cv/Rs
 print("N = :", N)
