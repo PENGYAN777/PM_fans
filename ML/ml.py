@@ -36,7 +36,7 @@ df = pd.read_csv('fluids.csv', '\t', header=0, encoding='utf-8')
 X = df.iloc[:, [1,2]]
 y = df.iloc[:, 0]
 
-X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.3, random_state=1, stratify=y)
+X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.2, random_state=1, stratify=y)
 
 sc = StandardScaler()
 sc.fit(X_train)
@@ -122,7 +122,7 @@ plt.ylabel('Molar mass (g/mol)')
 plt.legend(loc='upper left')
 plt.title("Training data")
 plt.tight_layout()
-#plt.savefig('images/03_01.png', dpi=300)
+plt.savefig('traing.pdf')
 plt.show()
 
 plot_decision_regions(X=X_test_std, y=y_test, classifier=sv)
@@ -131,5 +131,5 @@ plt.ylabel('Molar mass (g/mol)')
 plt.legend(loc='upper left')
 plt.title("Test data")
 plt.tight_layout()
-#plt.savefig('images/03_01.png', dpi=300)
+plt.savefig('test.pdf')
 plt.show()
