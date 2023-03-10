@@ -36,7 +36,7 @@ df = pd.read_csv('fluids.csv', '\t', header=0, encoding='utf-8')
 X = df.iloc[:, [1,2]]
 y = df.iloc[:, 0]
 
-X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.2, random_state=1, stratify=y)
+X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.3, random_state=1, stratify=y)
 
 sc = StandardScaler()
 sc.fit(X_train)
@@ -52,7 +52,7 @@ X_test_std  = sc.inverse_transform(X_test_std )
 2. fit
 """
 
-svm = SVC(kernel='rbf', C=100, random_state=1)
+svm = SVC(kernel='linear', C=10, random_state=1)
 sv = svm.fit(X_train_std, y_train)
 
 # print('Misclassified examples: %d' % (y_test != y_pred).sum())
@@ -120,8 +120,8 @@ y_combined = np.hstack((y_train, y_test))
 
 
 plot_decision_regions(X=X_train_std, y=y_train, classifier=sv)
-plt.xlabel('Molecular complexity')
-plt.ylabel('Molar mass (g/mol)')
+plt.xlabel('Molecular complexity (N)')
+plt.ylabel('Molar mass (M)')
 plt.legend(loc='upper left')
 plt.title("Training data")
 plt.tight_layout()
@@ -129,8 +129,8 @@ plt.savefig('traing.pdf')
 plt.show()
 
 plot_decision_regions(X=X_test_std, y=y_test, classifier=sv)
-plt.xlabel('Molecular complexity')
-plt.ylabel('Molar mass (g/mol)')
+plt.xlabel('Molecular complexity (N)')
+plt.ylabel('Molar mass (M)')
 plt.legend(loc='upper left')
 plt.title("Test data")
 plt.tight_layout()
