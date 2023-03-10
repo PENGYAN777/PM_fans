@@ -43,6 +43,9 @@ sc.fit(X_train)
 X_train_std = sc.transform(X_train)
 X_test_std = sc.transform(X_test)
 
+X_train_std  = sc.inverse_transform(X_train_std )
+X_test_std  = sc.inverse_transform(X_test_std )
+
 
 
 """
@@ -58,7 +61,7 @@ sv = svm.fit(X_train_std, y_train)
 """
 3. plot 
 """
-def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
+def plot_decision_regions(X, y, classifier, test_idx=None, resolution=1):
 
     # setup marker generator and color map
     markers = ('s', 'x', 'o', '^', 'v')
