@@ -151,24 +151,24 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('$M_2$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("mm_nicfd_M2_theta.pdf")
+fig1.savefig("mm_nicfd_M2_theta.eps")
 
-fig2 = plt.figure( dpi=300)
-lwh = 2
-axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z9_P2 , color=colors[0], lw=lwh, label="$Z_t = 0.9$")
-axes.plot(theta/math.pi*180  , z8_P2 , color=colors[1], lw=lwh, label="$Z_t = 0.8$")
-axes.plot(theta/math.pi*180  , z7_P2 , color=colors[2], lw=lwh, label="$Z_t = 0.7$")
-axes.plot(theta/math.pi*180  , z6_P2 , color=colors[3], lw=lwh, label="$Z_t = 0.6$")
-axes.plot(theta/math.pi*180  , z5_P2 , color=colors[4], lw=lwh, label="$Z_t = 0.5$")
-axes.plot(theta/math.pi*180  , z4_P2 , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
+# fig2 = plt.figure( dpi=300)
+# lwh = 2
+# axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
+# axes.plot(theta/math.pi*180  , z9_P2 , color=colors[0], lw=lwh, label="$Z_t = 0.9$")
+# axes.plot(theta/math.pi*180  , z8_P2 , color=colors[1], lw=lwh, label="$Z_t = 0.8$")
+# axes.plot(theta/math.pi*180  , z7_P2 , color=colors[2], lw=lwh, label="$Z_t = 0.7$")
+# axes.plot(theta/math.pi*180  , z6_P2 , color=colors[3], lw=lwh, label="$Z_t = 0.6$")
+# axes.plot(theta/math.pi*180  , z5_P2 , color=colors[4], lw=lwh, label="$Z_t = 0.5$")
+# axes.plot(theta/math.pi*180  , z4_P2 , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
 
 
-axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
-axes.set_ylabel('$P_2/P_t$',fontsize=12) 
-axes.set_title('$P_2/P_t$ vs $\\theta$',fontsize=14)
-axes.legend(loc=0 , prop={'size': 10}) # 
-fig2.savefig("mm_nicfd_P2_theta.pdf")
+# axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
+# axes.set_ylabel('$P_2/P_t$',fontsize=12) 
+# axes.set_title('$P_2/P_t$ vs $\\theta$',fontsize=14)
+# axes.legend(loc=0 , prop={'size': 10}) # 
+# fig2.savefig("mm_nicfd_P2_theta.eps")
 
 """
 3. plot Delat P
@@ -203,4 +203,4 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$\\Delta P$',fontsize=12) 
 axes.set_title('$\\Delta P$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig3.savefig("mm_nicfd_dP2_theta.pdf")
+fig3.savefig("mm_nicfd_dP2_theta.eps")

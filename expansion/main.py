@@ -12,7 +12,7 @@ import CoolProp as CP
 
 # compute active degree of freedom
 print("------------compute N-----------")
-fluidname = "Methanol"
+fluidname = "n-Decane"
 Pc = CP.CoolProp.PropsSI('Pcrit',fluidname)
 Tc = CP.CoolProp.PropsSI('Tcrit',fluidname)
 print("fluid name:", fluidname)

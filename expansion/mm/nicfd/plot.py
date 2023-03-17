@@ -52,8 +52,8 @@ axes.plot(z6.iloc[:,5] , z6.iloc[:,6] , color=colors[3], lw=lwh, label="$Z_t = 0
 axes.plot(z5.iloc[:,5] , z5.iloc[:,6] , color=colors[4], lw=lwh, label="$Z_t = 0.5$")
 axes.plot(z4.iloc[:,5] , z4.iloc[:,6] , color=colors[5], lw=lwh, label="$Z_t = 0.4$")
 
-axes.set_xlabel('Mach',fontsize=12)
+axes.set_xlabel('$M_2$',fontsize=12)
 axes.set_ylabel('$\\nu$',fontsize=12) 
-axes.set_title('$\\nu$ vs Mach number',fontsize=14)
+axes.set_title('$\\nu$ vs post-expansion Mach number',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig2.savefig("mm_nicfd_Mach_nu.pdf")
+fig2.savefig("mm_nicfd_Mach_nu.eps")
