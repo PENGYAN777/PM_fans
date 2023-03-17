@@ -49,7 +49,7 @@ z66= pd.read_csv("z6/z6.csv", ",", skiprows=0)
 """
 1. input theta and upstream Mach number, compute downstream data
 """
-n = 30
+n = 50
 """
 Z9
 """
@@ -65,7 +65,7 @@ z94_m2 = np.zeros(n)
 z95_m2 = np.zeros(n) 
 z96_m2 = np.zeros(n) 
 
-for i in range(n):
+for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -113,7 +113,7 @@ z84_m2 = np.zeros(n)
 z85_m2 = np.zeros(n) 
 z86_m2 = np.zeros(n) 
 
-for i in range(n):
+for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -160,7 +160,7 @@ z73_m2 = np.zeros(n)
 z74_m2 = np.zeros(n) 
 z75_m2 = np.zeros(n) 
 z76_m2 = np.zeros(n) 
-for i in range(n):
+for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -207,7 +207,7 @@ z63_m2 = np.zeros(n)
 z64_m2 = np.zeros(n) 
 z65_m2 = np.zeros(n) 
 z66_m2 = np.zeros(n) 
-for i in range(n):
+for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -240,6 +240,8 @@ for i in range(n):
     nu2 = nu1 + theta[i]
     M2 = z66.iloc[:,5][np.argmin(abs(z66.iloc[:,6]-nu2))] 
     z66_m2[i] = M2
+
+
 """
 2. plot
 """
@@ -278,6 +280,12 @@ axes.plot(theta/math.pi*180  , z64_m2 , color=colors[3], lw=lwh)
 axes.plot(theta/math.pi*180  , z65_m2 , color=colors[3], lw=lwh)
 axes.plot(theta/math.pi*180  , z66_m2 , color=colors[3], lw=lwh)
 
+# axes.plot(theta[0:5]/math.pi*180  , z51_m2[0:5] , color=colors[4], lw=lwh, label="$Z_t=0.5$")
+# axes.plot(theta[0:5]/math.pi*180  , z52_m2[0:5] , color=colors[4], lw=lwh)
+# axes.plot(theta[0:5]/math.pi*180  , z53_m2[0:5] , color=colors[4], lw=lwh)
+# axes.plot(theta[0:5]/math.pi*180  , z54_m2[0:5] , color=colors[4], lw=lwh)
+# axes.plot(theta[0:5]/math.pi*180  , z55_m2[0:5] , color=colors[4], lw=lwh)
+# axes.plot(theta[0:5]/math.pi*180  , z56_m2[0:5], color=colors[4], lw=lwh)
 
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)

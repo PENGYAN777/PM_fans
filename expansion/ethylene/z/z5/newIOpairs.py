@@ -17,7 +17,7 @@ import pandas as pd
 
 
 # give fluid name
-fluidname = "CO2"
+fluidname = "Ethylene"
 # update fluid
 Tmin =  CP.CoolProp.PropsSI("Ttriple",fluidname)
 Tc =  CP.CoolProp.PropsSI("Tcrit",fluidname)
@@ -44,10 +44,12 @@ def TGfromZP(Z,P):
     print("fluid name is:", fluidname)
     print("input pairs Z,P[Pa]:" ,Z , P )
     # compute T for given Z,P
-    Trange = np.linspace(Tc-50,Tmax,500)
+    Trange = np.linspace(150, 500,500)
     Trange = pd.Series(Trange)
     Z_error = np.zeros(Trange.size)
     for i in Trange.index:
+        if abs(Trange[i]-Pc)<0.05*Tc:
+            Trange[i] = 0.95*Tc
         Z_error[i] = CP.CoolProp.PropsSI('Z','T',Trange[i],'P',P,fluidname) - Z
     Z_error = abs(Z_error)
     T = Trange[np.argmin(Z_error)]
@@ -81,12 +83,14 @@ def PTfromZG(Z,Gamma):
     #print("fluid name is:", fluidname)
     #print("input pairs Z,Gamma:" ,Z , Gamma )
     # compute P,T for given Z,Gamma
-    Trange = np.linspace(Tc-50,Tmax/5,100)
+    Trange = np.linspace(150,500,100)
     Trange = pd.Series(Trange)
     Prange = np.zeros(100)
     Gammat = np.zeros(100)
     # loop for P,T
     for i in Trange.index:
+        if abs(Trange[i]-Pc)<0.05*Tc:
+            Trange[i] = 0.95*Tc
         Prange[i], Gammat[i] = PGfromZT(Z, Trange[i])
     Gammat = abs(Gammat - Gamma)
     P = Prange[np.argmin(Gammat)]
@@ -117,10 +121,12 @@ def ZTfromPG(P,Gamma):
     print("fluid name is:", fluidname)
     print("input pairs P,Gamma:" ,P , Gamma )
     # compute P for given t,Gamma
-    Trange = np.linspace(Tc-50,Tmax,500)
+    Trange = np.linspace(150,500,500)
     Trange = pd.Series(Trange)
     G_error = np.zeros(Trange.size)
     for i in Trange.index:
+        if abs(Trange[i]-Pc)<0.05*Tc:
+            Trange[i] = 0.95*Tc
         G_error[i] = CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics','T',Trange[i],'P',P,fluidname) - Gamma
     G_error = abs(G_error)
     T = Trange[np.argmin(G_error)]
