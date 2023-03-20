@@ -33,4 +33,4 @@ axes.legend(loc=0 , prop={'size': 10}) #
 # axes.set_xlim(0,8)
 # axes.set_ylim(0,8)
 #axes.legend(loc=2) # 2 means left top
-fig1.savefig("geo_cfd.pdf")
+fig1.savefig("geo_cfd.eps")

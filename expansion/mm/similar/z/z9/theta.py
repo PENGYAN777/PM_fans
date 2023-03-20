@@ -140,7 +140,7 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('Exact solutions vs CFD results',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig2.savefig("cfd_mm_z9.pdf")
+fig2.savefig("cfd_mm_z9.eps")
 
 
 
