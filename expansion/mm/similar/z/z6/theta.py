@@ -123,7 +123,7 @@ ax2.set_ylim([0, 3])
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('$Z_t = 0.6$',fontsize=14)
-axes.legend(loc=4 , prop={'size': 10}) # 
-fig1.savefig("mm_z6_M2_theta.pdf")
+# axes.legend(loc=4 , prop={'size': 10}) # 
+fig1.savefig("mm_z6_M2_theta.eps")
 
 

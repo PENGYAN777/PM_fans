@@ -122,8 +122,8 @@ ax2.set_ylabel('$\\Delta M_2$(%)',fontsize=12)
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('$Z_t = 0.9$',fontsize=14)
-axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("mm_z9_M2_theta.pdf")
+# axes.legend(loc=0 , prop={'size': 10}) # 
+fig1.savefig("mm_z9_M2_theta.eps")
 
 ############################## fig 2
 x = [5, 10, 15, 20, 25, 30, 35, 40, 45, 48, ]
@@ -132,15 +132,24 @@ y = [1.225, 1.35, 1.48, 1.57, 1.67, 1.80, 1.89, 1.99, 2.10, 2.16, ]
 fig2 = plt.figure( dpi=300)
 lwh = 2
 axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Exact")
-axes.plot(x  , y , 'ko', lw=lwh, label="CFD")
+axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Theoretical solutions")
+axes.plot(x  , y , 'ko', lw=lwh, label="Numerical results")
 
+
+diff = 0
+for i in range(0,10,1):
+    x1 = x[i]
+    y1 = z1_m2[np.argmin(abs(theta/math.pi*180 -x1))]
+    diff = diff + (y1 - y[i])/y[i]*100
+diff = diff/10
+print('average diff:',diff)
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
-axes.set_title('Exact solutions vs CFD results',fontsize=14)
+axes.set_title('Theoretical solutions vs numerical results',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig2.savefig("cfd_mm_z9.eps")
+
 
 
 

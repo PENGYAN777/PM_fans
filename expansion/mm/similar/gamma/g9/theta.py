@@ -123,7 +123,7 @@ ax2.set_ylabel('$\\Delta M_2$(%)',fontsize=12)
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 axes.set_title('$\\Gamma_1 = 0.9$',fontsize=14)
-axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("mm_g9_M2_theta.pdf")
+# axes.legend(loc=0 , prop={'size': 10}) # 
+fig1.savefig("mm_g9_M2_theta.eps")
 
 

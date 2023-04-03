@@ -48,9 +48,9 @@ es = CP.CoolProp.PropsSI('Smass','T',Ts,'Q',1,fluidname)
 # ----------------
 # Contour of Z and Gamma
 # ----------------
-n = 100 # number of points
-y = np.linspace(Tmin, Tmax,n)
-x = np.linspace(300, 1600,n)
+n = 50 # number of points
+y = np.linspace(400, Tmax,n)
+x = np.linspace(600, 1600,n)
 X,Y = np.meshgrid(x,y)
 Z =  CP.CoolProp.PropsSI('Z','Smass',X,'T|gas',Y,fluidname)
 Gamma =  CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics','Smass',X,'T',Y,fluidname)
@@ -58,13 +58,14 @@ Gamma =  CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics','Smass',X,
 levels = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 cp = plt.contour(X, Y, Z, levels, colors='black', linestyles='dashed')
 plt.clabel(cp, inline=True,  fontsize=10)
-plt.contourf(X, Y, Gamma, [0.4,0.6,0.8,1.0,1.2,1.4,1.6], cmap='rainbow')
-plt.colorbar()
+plt.contourf(X, Y, Gamma, [0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4], cmap='rainbow')
+plt.colorbar(label='$\Gamma$')
 # ------
 # Labels
 # ------
 
 plt.plot(es,Ts,'k',lw = lw, solid_capstyle = 'round', label = "LVS")
+plt.plot(0,0,'k--',lw = lw/2, solid_capstyle = 'round', label = "Z")
 ax.legend(loc=4) # 2 means left top
 # Critical lines
 plt.axvline(ec, dashes = [2, 2])
@@ -106,12 +107,12 @@ z4_t = [563.03,  561.94, 557.01, 548.81, 539.86, 523.09]
 z4_s = CP.CoolProp.PropsSI('Smass','P',z4_p,'T',z4_t,fluidname)
 plt.plot(z4_s,z4_t,'o' ,color=colors[5],lw = lw)
 
-plt.ylim(300,Tmax)
+plt.ylim(400,Tmax)
 # plt.gca().set_yscale('log')
-plt.gca().set_xlim(300, 1600)
-plt.xlabel('Entropy [J/K]')
-plt.ylabel('Temperature [K]')
-plt.title('Contour of Z and $\Gamma$ for siloxane MM')
+plt.gca().set_xlim(600, 1600)
+plt.xlabel('S [J/K]')
+plt.ylabel('T [K]')
+# plt.title('Contour of Z and $\Gamma$ for siloxane MM')
 plt.tight_layout()
 fig.savefig("files/mm_z_Contour_TS.eps")
 print("plotcontour.py called")

@@ -28,11 +28,18 @@ axes.plot(md.iloc[:,0] , md.iloc[:,1] , 'ko', lw=lwh/2, label="Cramer et.al 1992
 
 
 axes.set_xlabel('$\\rho/\\rho_c$',fontsize=12)
-axes.set_ylabel('Mach',fontsize=12) 
+axes.set_ylabel('M',fontsize=12) 
 axes.set_title('Mach number vs $\\rho/\\rho_c$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig1.savefig("vv_mrho.eps")
 
+diff = 0
+for i in range(0,17,1):
+    x = md.iloc[i,0]
+    y = z34.iloc[:,5][np.argmin(abs(z34.iloc[:,3]-x))]
+    diff = diff + (y - md.iloc[i,1])/md.iloc[i,1]*100
+diff = diff/18
+print('average diff:',diff)
 # fig2 = plt.figure( dpi=300)
 # lwh = 2
 # axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure

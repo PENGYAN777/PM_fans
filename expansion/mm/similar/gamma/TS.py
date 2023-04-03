@@ -59,12 +59,13 @@ levels = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 cp = plt.contour(X, Y, Z, levels, colors='black', linestyles='dashed')
 plt.clabel(cp, inline=True,  fontsize=10)
 plt.contourf(X, Y, Gamma, [0.4,0.5,0.6,0.7,0.8,0.9,1.0], cmap='rainbow')
-plt.colorbar()
+plt.colorbar(location='right', orientation='vertical', label='$\Gamma$')
 # ------
 # Labels
 # ------
 
 plt.plot(es,Ts,'k',lw = lw, solid_capstyle = 'round', label = "LVS")
+plt.plot(0,0,'k--',lw = lw/2, solid_capstyle = 'round', label = "Z")
 ax.legend(loc=4) # 2 means left top
 # Critical lines
 plt.axvline(ec, dashes = [2, 2])
@@ -83,12 +84,12 @@ plt.plot(z9_s,z9_t,'o' ,color=colors[0], lw = lw)
 
 
 
-plt.ylim(300,Tmax)
+plt.ylim(400,Tmax)
 # plt.gca().set_yscale('log')
-plt.gca().set_xlim(300, 1600)
-plt.xlabel('Entropy [J/K]')
-plt.ylabel('Temperature [K]')
-plt.title('Contour of Z and $\Gamma$ for siloxane MM')
+plt.gca().set_xlim(600, 1400)
+plt.xlabel('S [J/K]')
+plt.ylabel('T [K]')
+# plt.title('Contour of Z and $\Gamma$ for siloxane MM')
 plt.tight_layout()
-fig.savefig("files/mm_g_Contour_TS.pdf")
+fig.savefig("files/mm_g_Contour_TS.eps")
 print("plotcontour.py called")
