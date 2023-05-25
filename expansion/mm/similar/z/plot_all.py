@@ -406,7 +406,20 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("mm_z_M2_theta.pdf")
+fig1.savefig("mm_z_M2_theta.eps")
 
+################################################################################
+fig2 = plt.figure( dpi=300)
+lwh = 2
+axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
 
+zt = [0.4,0.5,0.6,0.7,0.8,0.9]
+maxdiff = [0.4,0.7,1.0,3.0,6.0,9.2] 
+maxdiff.reverse()
 
+plt.bar(zt,maxdiff,color ='b', width = 0.02)
+axes.set_xlabel('$Z_t$',fontsize=12)
+axes.set_ylabel('$(\Delta M_2)_{\max}\%$',fontsize=12) 
+# axes.set_title('$Z_t = 0.9$',fontsize=14)
+# axes.legend(loc=0 , prop={'size': 10}) # 
+fig2.savefig("mm_z_M2_zt.eps")

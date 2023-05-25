@@ -149,7 +149,7 @@ axes.plot(theta/math.pi*180  , z4_m2 , color=colors[5], lw=lwh, label="$Z_t = 0.
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
-axes.set_title('$M_2$ vs $\\theta$',fontsize=14)
+# axes.set_title('$M_2$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig1.savefig("mm_nicfd_M2_theta.eps")
 
@@ -182,12 +182,12 @@ diff_z5 = np.zeros(n) # diff
 diff_z4 = np.zeros(n) # diff
 
 for i in range(n):
-    diff_z9[i] = (z9_P2[i] - z9_P2[0])/( z9_P2[0])
-    diff_z8[i] = (z8_P2[i] - z8_P2[0])/( z8_P2[0])
-    diff_z7[i] = (z7_P2[i] - z7_P2[0])/( z7_P2[0])
-    diff_z6[i] = (z6_P2[i] - z6_P2[0])/( z6_P2[0])
-    diff_z5[i] = (z5_P2[i] - z5_P2[0])/( z5_P2[0])
-    diff_z4[i] = (z4_P2[i] - z4_P2[0])/( z4_P2[0])
+    diff_z9[i] = -(z9_P2[i] - z9_P2[0])/( z9_P2[0])
+    diff_z8[i] = -(z8_P2[i] - z8_P2[0])/( z8_P2[0])
+    diff_z7[i] = -(z7_P2[i] - z7_P2[0])/( z7_P2[0])
+    diff_z6[i] = -(z6_P2[i] - z6_P2[0])/( z6_P2[0])
+    diff_z5[i] = -(z5_P2[i] - z5_P2[0])/( z5_P2[0])
+    diff_z4[i] = -(z4_P2[i] - z4_P2[0])/( z4_P2[0])
 
 fig3 = plt.figure( dpi=300)
 lwh = 2
@@ -201,6 +201,6 @@ axes.plot(theta/math.pi*180 ,  diff_z4 , color=colors[5], lw=lwh, label="$Z_t = 
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$\\Delta P$',fontsize=12) 
-axes.set_title('$\\Delta P$ vs $\\theta$',fontsize=14)
+# axes.set_title('$\\Delta P$ vs $\\theta$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig3.savefig("mm_nicfd_dP2_theta.eps")

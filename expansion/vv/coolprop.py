@@ -42,7 +42,7 @@ dc = CP.CoolProp.PropsSI('Dmass','P',Pc,'T',Tc,fluidname)
 
 pt = 2.01*Pc # total pressure
 tt = 1.07*Tc
-dt = CP.CoolProp.PropsSI('Dmass','P|gas',pt,'T',tt,fluidname) 
+dt = CP.CoolProp.PropsSI('Dmass','P',pt,'T',tt,fluidname) 
 s = CP.CoolProp.PropsSI('Smass','P',pt,'T',tt,fluidname) 
 ht = CP.CoolProp.PropsSI('Hmass','P',pt,'T',tt,fluidname) 
 Zt = CP.CoolProp.PropsSI('Z','P',pt,'T',tt,fluidname) 

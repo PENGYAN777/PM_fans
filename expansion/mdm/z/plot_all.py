@@ -334,19 +334,19 @@ axes.plot(theta/math.pi*180  , z64_m2 , color=colors[3], lw=lwh)
 axes.plot(theta/math.pi*180  , z65_m2 , color=colors[3], lw=lwh)
 axes.plot(theta/math.pi*180  , z66_m2 , color=colors[3], lw=lwh)
 
-axes.plot(theta/math.pi*180  , z51_m2 , color=colors[4], lw=lwh, label="$Z_t=0.5$")
-axes.plot(theta/math.pi*180  , z52_m2 , color=colors[4], lw=lwh)
-axes.plot(theta/math.pi*180  , z53_m2 , color=colors[4], lw=lwh)
-axes.plot(theta/math.pi*180  , z54_m2 , color=colors[4], lw=lwh)
-axes.plot(theta/math.pi*180  , z55_m2 , color=colors[4], lw=lwh)
-axes.plot(theta/math.pi*180  , z56_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z51_m2 , color=colors[4], lw=lwh, label="$Z_t=0.5$")
+# axes.plot(theta/math.pi*180  , z52_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z53_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z54_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z55_m2 , color=colors[4], lw=lwh)
+# axes.plot(theta/math.pi*180  , z56_m2 , color=colors[4], lw=lwh)
 
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("mdm_z_M2_theta.pdf")
+fig1.savefig("mdm_z_M2_theta.eps")
 
 
 

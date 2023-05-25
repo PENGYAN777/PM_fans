@@ -42,9 +42,9 @@ z5_m2 = np.zeros(n)
 z6_m2 = np.zeros(n) 
 
 
-# z1_P2 = np.zeros(n) 
-# z1_T2 = np.zeros(n) 
-# z1_D2 = np.zeros(n) 
+z1_P2 = np.zeros(n) 
+z1_T2 = np.zeros(n) 
+z1_D2 = np.zeros(n) 
 
 
 
@@ -56,12 +56,12 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z1.iloc[:,5][np.argmin(abs(z1.iloc[:,6]-nu2))] 
     z1_m2[i] = M2
-    # P2 = z1.iloc[:,2][np.argmin(abs(z1.iloc[:,6]-nu2))] 
-    # z1_P2[i] = P2
-    # D2 = z1.iloc[:,3][np.argmin(abs(z1.iloc[:,6]-nu2))] 
-    # z1_D2[i] = D2
-    # T2 = z1.iloc[:,4][np.argmin(abs(z1.iloc[:,6]-nu2))] 
-    # z1_T2[i] = T2
+    P2 = z1.iloc[:,2][np.argmin(abs(z1.iloc[:,6]-nu2))] 
+    z1_P2[i] = P2
+    D2 = z1.iloc[:,3][np.argmin(abs(z1.iloc[:,6]-nu2))] 
+    z1_D2[i] = D2
+    T2 = z1.iloc[:,4][np.argmin(abs(z1.iloc[:,6]-nu2))] 
+    z1_T2[i] = T2
     # for z2
     nu1 = z2.iloc[:,6][np.argmin(abs(z2.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
@@ -125,9 +125,12 @@ axes.set_title('$Z_t = 0.9$',fontsize=14)
 # axes.legend(loc=0 , prop={'size': 10}) # 
 fig1.savefig("mm_z9_M2_theta.eps")
 
-############################## fig 2
+################################################################### fig 2,3
 x = [5, 10, 15, 20, 25, 30, 35, 40, 45, 48, ]
-y = [1.225, 1.35, 1.48, 1.57, 1.67, 1.80, 1.89, 1.99, 2.10, 2.16, ]
+y = [1.225, 1.35, 1.48, 1.57, 1.67, 1.80, 1.89, 1.99, 2.10, 2.16, ] # Mach number
+p1 = [942167, 950616, 953753, 957472, 958766, 962719, 962583, 965749, 969327, 969263, ]
+p2 = [746138, 621273, 525985, 445515, 368728, 306000, 252369, 205398, 167109, 147191, ]
+dp = (np.array(p1)-np.array(p2))/np.array(p1)
 
 fig2 = plt.figure( dpi=300)
 lwh = 2
@@ -146,9 +149,30 @@ print('average diff:',diff)
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
-axes.set_title('Theoretical solutions vs numerical results',fontsize=14)
+# axes.set_title('Theoretical solutions vs numerical results',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig2.savefig("cfd_mm_z9.eps")
+################################################################
+fig3 = plt.figure( dpi=300)
+lwh = 2
+axes = fig3.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
+axes.plot(theta/math.pi*180  , (9.326e5-z1_P2*1.55e6)/9.326e5 , 'k', lw=lwh, label="Theoretical solutions")
+axes.plot(x  , (np.array(p1)-np.array(p2))/np.array(p1) , 'ko', lw=lwh, label="Numerical results")
+
+
+diff = 0
+for i in range(0,10,1):
+    x1 = x[i]
+    y1 = (9.326e5-z1_P2[np.argmin(abs(theta/math.pi*180 -x1))]*1.55e6)/9.326e5
+    diff = diff + (y1 - (np.array(p1[i])-np.array(p2[i]))/np.array(p1[i]))/y1*100
+diff = diff/10
+print('average diff:',diff)
+
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
+axes.set_ylabel('$\Delta P$',fontsize=12) 
+# axes.set_title('Theoretical solutions vs numerical results',fontsize=14)
+axes.legend(loc=0 , prop={'size': 10}) # 
+fig3.savefig("cfd_mm_z9_P.eps")
 
 
 

@@ -29,3 +29,8 @@ Z = CP.CoolProp.PropsSI('Z','T', Tc*n1, 'P', Pc*n2,  fluidname)
 print("Z = :", Z)   
 N = 2*cv/Rs
 print("N = :", N)
+print('-----------------')
+P = 1.57e6
+T = 239+273.15
+Z = CP.CoolProp.PropsSI('Z','T', T, 'P', P,  fluidname)
+print("Z = :", Z)  
