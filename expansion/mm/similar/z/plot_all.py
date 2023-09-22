@@ -78,6 +78,13 @@ z94_m2 = np.zeros(n)
 z95_m2 = np.zeros(n) 
 z96_m2 = np.zeros(n) 
 
+z91_P2 = np.zeros(n) 
+z92_P2 = np.zeros(n) 
+z93_P2 = np.zeros(n) 
+z94_P2 = np.zeros(n) 
+z95_P2 = np.zeros(n) 
+z96_P2 = np.zeros(n) 
+
 for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
@@ -86,31 +93,43 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z91.iloc[:,5][np.argmin(abs(z91.iloc[:,6]-nu2))] 
     z91_m2[i] = M2
+    P2 = z91.iloc[:,2][np.argmin(abs(z91.iloc[:,6]-nu2))] 
+    z91_P2[i] = P2
     # for z2
     nu1 = z92.iloc[:,6][np.argmin(abs(z92.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z92.iloc[:,5][np.argmin(abs(z92.iloc[:,6]-nu2))] 
     z92_m2[i] = M2
+    P2 = z92.iloc[:,2][np.argmin(abs(z92.iloc[:,6]-nu2))] 
+    z92_P2[i] = P2
     # for z3
     nu1 = z93.iloc[:,6][np.argmin(abs(z93.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z93.iloc[:,5][np.argmin(abs(z93.iloc[:,6]-nu2))] 
     z93_m2[i] = M2
+    P2 = z93.iloc[:,2][np.argmin(abs(z93.iloc[:,6]-nu2))] 
+    z93_P2[i] = P2
     # for z4
     nu1 = z94.iloc[:,6][np.argmin(abs(z94.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z94.iloc[:,5][np.argmin(abs(z94.iloc[:,6]-nu2))] 
     z94_m2[i] = M2
+    P2 = z94.iloc[:,2][np.argmin(abs(z94.iloc[:,6]-nu2))] 
+    z94_P2[i] = P2
     # for z5
     nu1 = z95.iloc[:,6][np.argmin(abs(z95.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z95.iloc[:,5][np.argmin(abs(z95.iloc[:,6]-nu2))] 
     z95_m2[i] = M2
+    P2 = z95.iloc[:,2][np.argmin(abs(z95.iloc[:,6]-nu2))] 
+    z95_P2[i] = P2
     # for z6
     nu1 = z96.iloc[:,6][np.argmin(abs(z96.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z96.iloc[:,5][np.argmin(abs(z96.iloc[:,6]-nu2))] 
     z96_m2[i] = M2
+    P2 = z96.iloc[:,2][np.argmin(abs(z96.iloc[:,6]-nu2))] 
+    z96_P2[i] = P2
 """
 Z8
 """
@@ -407,6 +426,25 @@ axes.set_ylabel('$M_2$',fontsize=12)
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig1.savefig("mm_z_M2_theta.eps")
+
+
+###############################################################################
+fig3 = plt.figure( dpi=300)
+lwh = 2
+axes = fig3.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
+axes.plot(theta/math.pi*180  , (9.326e5-z91_P2*1.55e6)/9.326e5 , color=colors[0], lw=lwh, label="$Z_t=0.9$")
+axes.plot(theta/math.pi*180  , (799090-z92_P2*1301200)/799090 , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (645291-z93_P2*1051200)/645291 , color=colors[0], lw=lwh)
+# axes.plot(theta/math.pi*180  , z94_P2 , color=colors[0], lw=lwh)
+# axes.plot(theta/math.pi*180  , z95_P2 , color=colors[0], lw=lwh)
+# axes.plot(theta/math.pi*180  , z96_P2 , color=colors[0], lw=lwh)
+
+
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
+axes.set_ylabel('$\Delta P$',fontsize=12) 
+# axes.set_title('$Z_t = 0.9$',fontsize=14)
+axes.legend(loc=0 , prop={'size': 10}) # 
+fig3.savefig("mm_z_M2_theta_dp.eps")
 
 ################################################################################
 fig2 = plt.figure( dpi=300)
