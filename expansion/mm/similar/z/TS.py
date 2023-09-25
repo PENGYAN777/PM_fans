@@ -66,7 +66,6 @@ plt.colorbar(label='$\Gamma$')
 
 plt.plot(es,Ts,'k',lw = lw, solid_capstyle = 'round', label = "LVS")
 plt.plot(0,0,'k--',lw = lw/2, solid_capstyle = 'round', label = "Z")
-ax.legend(loc=4) # 2 means left top
 # Critical lines
 plt.axvline(ec, dashes = [2, 2])
 plt.axhline(Tc, dashes = [2, 2])
@@ -80,32 +79,34 @@ colors = plt.cm.tab20(np.linspace(0, 1, nc))
 z9_p = [1.55e6,1.30E6,  1.05E6, 8.01E5, 5.51E5, 3.01E5]
 z9_t = [673, 654.39, 624.85, 585.46, 531.30, 449.23]
 z9_s = CP.CoolProp.PropsSI('Smass','P',z9_p,'T',z9_t,fluidname)
-plt.plot(z9_s,z9_t,'o' ,color=colors[0],lw = lw)
+plt.plot(z9_s,z9_t,'o' ,color=colors[0],lw = lw,label = "Z=0.9")
 
 z8_p = [2.52e6,2.12E6, 1.72E6, 1.32E6, 9.20E5, 5.21E5]
 z8_t = [643.45, 623.76, 598.05, 564.13, 515.98, 443.76]
 z8_s = CP.CoolProp.PropsSI('Smass','P',z8_p,'T',z8_t,fluidname)
-plt.plot(z8_s,z8_t,'o' ,color=colors[1],lw = lw)
+plt.plot(z8_s,z8_t,'o' ,color=colors[1],lw = lw,label = "Z=0.8")
 
 z7_p = [2.91E6, 2.51E6, 2.11E6, 1.71E6, 1.31E6, 9.08E5 ]
 z7_t = [610.08, 595.31, 576.16, 551.54, 519.26, 474.40]
 z7_s = CP.CoolProp.PropsSI('Smass','P',z7_p,'T',z7_t,fluidname)
-plt.plot(z7_s,z7_t,'o' ,color=colors[2],lw = lw)
+plt.plot(z7_s,z7_t,'o' ,color=colors[2],lw = lw,label = "Z=0.7")
 
 z6_p = [5e6, 4.3e6,  3.6e6, 2.9e6, 2.2e6, 1.5e6]
 z6_t = [619.38, 612.27, 599.69, 581.08, 553.733, 511.60]
 z6_s = CP.CoolProp.PropsSI('Smass','P',z6_p,'T',z6_t,fluidname)
-plt.plot(z6_s,z6_t,'o' ,color=colors[3],lw = lw)
+plt.plot(z6_s,z6_t,'o' ,color=colors[3],lw = lw,label = "Z=0.6")
 
 z5_p = [5e6, 4.35e6, 3.70e6, 3.05E6, 2.40E6, 1.75E6]
 z5_t = [589.29, 588.20, 580.54, 567.41, 546.62, 515.98]
 z5_s = CP.CoolProp.PropsSI('Smass','P',z5_p,'T',z5_t,fluidname)
-plt.plot(z5_s,z5_t,'o' ,color=colors[4],lw = lw)
+plt.plot(z5_s,z5_t,'o' ,color=colors[4],lw = lw,label = "Z=0.5")
 
 z4_p = [4e6,   3.6e6, 3.2e6, 2.8e6, 2.4e6, 2e6]
 z4_t = [563.03,  561.94, 557.01, 548.81, 539.86, 523.09]
 z4_s = CP.CoolProp.PropsSI('Smass','P',z4_p,'T',z4_t,fluidname)
-plt.plot(z4_s,z4_t,'o' ,color=colors[5],lw = lw)
+plt.plot(z4_s,z4_t,'o' ,color=colors[5],lw = lw,label = "Z=0.4")
+
+ax.legend(loc=4) # 2 means left top
 
 plt.ylim(400,Tmax)
 # plt.gca().set_yscale('log')
