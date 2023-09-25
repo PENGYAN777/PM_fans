@@ -20,16 +20,21 @@ lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
 
 zt = [0.6,0.7,0.8,0.9]
+zt1 = [item - 0.03 for item in zt]
+zt2 = [item - 0.01 for item in zt]
+zt3 = [item + 0.01 for item in zt]
+zt4 = [item + 0.03 for item in zt]
+
 maxdiff_nb = [ 2.0, 1.4, 1.2, 0.9 ] 
 maxdiff_np = [  1.75, 0.9,  0.75, 0.6] 
 maxdiff_nh = [  1.6, 0.8, 0.7 , 0.5] 
 maxdiff_no = [ 1.55, 0.7, 0.4, 0.3  ] 
 
 wh = 0.02
-plt.bar(zt,maxdiff_nb,color=colors[0], width = wh,label="$n-Butane$")
-plt.bar(zt,maxdiff_np,color=colors[1], width = wh,label="$n-Pentane$")
-plt.bar(zt,maxdiff_nh,color=colors[2], width = wh,label="$n-Hexane$")
-plt.bar(zt,maxdiff_no,color=colors[3], width = wh,label="$n-Octane$")
+plt.bar(zt1,maxdiff_nb,color=colors[0], width = wh,label="$n-Butane$")
+plt.bar(zt2,maxdiff_np,color=colors[1], width = wh,label="$n-Pentane$")
+plt.bar(zt3,maxdiff_nh,color=colors[2], width = wh,label="$n-Hexane$")
+plt.bar(zt4,maxdiff_no,color=colors[3], width = wh,label="$n-Octane$")
 plt.xticks(np.arange(min(zt), max(zt)+1, 0.1))
 
 axes.set_xlim([0.55, 0.95])
