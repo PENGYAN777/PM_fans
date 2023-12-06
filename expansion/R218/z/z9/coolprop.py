@@ -107,7 +107,7 @@ for i in t.index:
 
 pd.DataFrame(pp).to_csv('z6.csv', index_label = "Index", header  = ['pressure']) 
 data = pd.read_csv("z6.csv", ",")
-# append new columns
+# append new column
 D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu})
 newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file

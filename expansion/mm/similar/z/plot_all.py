@@ -574,7 +574,7 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$\Delta P$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig3.savefig("mm_z_M2_theta_dp.eps")
+fig3.savefig("mm_z_dp_theta.eps")
 
 ################################################################################
 fig2 = plt.figure( dpi=300)

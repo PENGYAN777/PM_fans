@@ -97,9 +97,9 @@ Pstar = p[np.argmin(abs(m-1))]
 # # z3,z4
 # V,T,M,nu = rk4(vstar, 7*vstar, Tstar, 1, 0, 1000)
 # # z5
-# V,T,M,nu = rk4(vstar, 6*vstar, Tstar, 1, 0, 1000)
+V,T,M,nu = rk4(vstar, 6*vstar, Tstar, 1, 0, 1000)
 # z6
-V,T,M,nu = rk4(vstar, 5*vstar, Tstar, 1, 0, 1000)
+# V,T,M,nu = rk4(vstar, 5*vstar, Tstar, 1, 0, 1000)
 """
 5. write into csv file
 """    

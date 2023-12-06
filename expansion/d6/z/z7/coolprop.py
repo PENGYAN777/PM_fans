@@ -40,7 +40,7 @@ print("critical pressure[Pa]:", Pc)
 """
 
 
-pt = Pc*0.75 - Pc*0.05*5# total pressure
+pt = Pc*0.75 - Pc*0.05*5 # total pressure
 zt = 0.7
 # pt = Pc*1.1 # total pressure
 # zt = 0.6

@@ -72,6 +72,13 @@ z94_m2 = np.zeros(n)
 z95_m2 = np.zeros(n) 
 z96_m2 = np.zeros(n) 
 
+z91_P2 = np.zeros(n) 
+z92_P2 = np.zeros(n) 
+z93_P2 = np.zeros(n) 
+z94_P2 = np.zeros(n) 
+z95_P2 = np.zeros(n) 
+z96_P2 = np.zeros(n) 
+
 for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
@@ -80,31 +87,43 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z91.iloc[:,5][np.argmin(abs(z91.iloc[:,6]-nu2))] 
     z91_m2[i] = M2
+    P2 = z91.iloc[:,2][np.argmin(abs(z91.iloc[:,6]-nu2))] 
+    z91_P2[i] = P2
     # for z2
     nu1 = z92.iloc[:,6][np.argmin(abs(z92.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z92.iloc[:,5][np.argmin(abs(z92.iloc[:,6]-nu2))] 
     z92_m2[i] = M2
+    P2 = z92.iloc[:,2][np.argmin(abs(z92.iloc[:,6]-nu2))] 
+    z92_P2[i] = P2
     # for z3
     nu1 = z93.iloc[:,6][np.argmin(abs(z93.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z93.iloc[:,5][np.argmin(abs(z93.iloc[:,6]-nu2))] 
     z93_m2[i] = M2
+    P2 = z93.iloc[:,2][np.argmin(abs(z93.iloc[:,6]-nu2))] 
+    z93_P2[i] = P2
     # for z4
     nu1 = z94.iloc[:,6][np.argmin(abs(z94.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z94.iloc[:,5][np.argmin(abs(z94.iloc[:,6]-nu2))] 
     z94_m2[i] = M2
+    P2 = z94.iloc[:,2][np.argmin(abs(z94.iloc[:,6]-nu2))] 
+    z94_P2[i] = P2
     # for z5
     nu1 = z95.iloc[:,6][np.argmin(abs(z95.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z95.iloc[:,5][np.argmin(abs(z95.iloc[:,6]-nu2))] 
     z95_m2[i] = M2
+    P2 = z95.iloc[:,2][np.argmin(abs(z95.iloc[:,6]-nu2))] 
+    z95_P2[i] = P2
     # for z6
     nu1 = z96.iloc[:,6][np.argmin(abs(z96.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z96.iloc[:,5][np.argmin(abs(z96.iloc[:,6]-nu2))] 
     z96_m2[i] = M2
+    P2 = z96.iloc[:,2][np.argmin(abs(z96.iloc[:,6]-nu2))] 
+    z96_P2[i] = P2
 """
 Z8
 """
@@ -120,6 +139,13 @@ z84_m2 = np.zeros(n)
 z85_m2 = np.zeros(n) 
 z86_m2 = np.zeros(n) 
 
+z81_P2 = np.zeros(n) 
+z82_P2 = np.zeros(n) 
+z83_P2 = np.zeros(n) 
+z84_P2 = np.zeros(n) 
+z85_P2 = np.zeros(n) 
+z86_P2 = np.zeros(n) 
+
 for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
@@ -128,31 +154,43 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z81.iloc[:,5][np.argmin(abs(z81.iloc[:,6]-nu2))] 
     z81_m2[i] = M2
+    P2 = z81.iloc[:,2][np.argmin(abs(z81.iloc[:,6]-nu2))] 
+    z81_P2[i] = P2
     # for z2
     nu1 = z82.iloc[:,6][np.argmin(abs(z82.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z82.iloc[:,5][np.argmin(abs(z82.iloc[:,6]-nu2))] 
     z82_m2[i] = M2
+    P2 = z82.iloc[:,2][np.argmin(abs(z82.iloc[:,6]-nu2))] 
+    z82_P2[i] = P2
     # for z3
     nu1 = z83.iloc[:,6][np.argmin(abs(z83.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z83.iloc[:,5][np.argmin(abs(z83.iloc[:,6]-nu2))] 
     z83_m2[i] = M2
+    P2 = z83.iloc[:,2][np.argmin(abs(z83.iloc[:,6]-nu2))] 
+    z83_P2[i] = P2
     # for z4
     nu1 = z84.iloc[:,6][np.argmin(abs(z84.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z84.iloc[:,5][np.argmin(abs(z84.iloc[:,6]-nu2))] 
     z84_m2[i] = M2
+    P2 = z84.iloc[:,2][np.argmin(abs(z84.iloc[:,6]-nu2))] 
+    z84_P2[i] = P2
     # for z5
     nu1 = z85.iloc[:,6][np.argmin(abs(z85.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z85.iloc[:,5][np.argmin(abs(z85.iloc[:,6]-nu2))] 
     z85_m2[i] = M2
+    P2 = z85.iloc[:,2][np.argmin(abs(z85.iloc[:,6]-nu2))] 
+    z85_P2[i] = P2
     # for z6
     nu1 = z86.iloc[:,6][np.argmin(abs(z86.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z86.iloc[:,5][np.argmin(abs(z86.iloc[:,6]-nu2))] 
     z86_m2[i] = M2
+    P2 = z86.iloc[:,2][np.argmin(abs(z86.iloc[:,6]-nu2))] 
+    z86_P2[i] = P2
 """
 Z7
 """    
@@ -167,6 +205,13 @@ z73_m2 = np.zeros(n)
 z74_m2 = np.zeros(n) 
 z75_m2 = np.zeros(n) 
 z76_m2 = np.zeros(n) 
+
+z71_P2 = np.zeros(n) 
+z72_P2 = np.zeros(n) 
+z73_P2 = np.zeros(n) 
+z74_P2 = np.zeros(n) 
+z75_P2 = np.zeros(n) 
+z76_P2 = np.zeros(n) 
 for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
@@ -175,31 +220,43 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z71.iloc[:,5][np.argmin(abs(z71.iloc[:,6]-nu2))] 
     z71_m2[i] = M2
+    P2 = z71.iloc[:,2][np.argmin(abs(z71.iloc[:,6]-nu2))] 
+    z71_P2[i] = P2
     # for z2
     nu1 = z72.iloc[:,6][np.argmin(abs(z72.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z72.iloc[:,5][np.argmin(abs(z72.iloc[:,6]-nu2))] 
     z72_m2[i] = M2
+    P2 = z72.iloc[:,2][np.argmin(abs(z72.iloc[:,6]-nu2))] 
+    z72_P2[i] = P2
     # for z3
     nu1 = z73.iloc[:,6][np.argmin(abs(z73.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z73.iloc[:,5][np.argmin(abs(z73.iloc[:,6]-nu2))] 
     z73_m2[i] = M2
+    P2 = z73.iloc[:,2][np.argmin(abs(z73.iloc[:,6]-nu2))] 
+    z73_P2[i] = P2
     # for z4
     nu1 = z74.iloc[:,6][np.argmin(abs(z74.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z74.iloc[:,5][np.argmin(abs(z74.iloc[:,6]-nu2))] 
     z74_m2[i] = M2
+    P2 = z74.iloc[:,2][np.argmin(abs(z74.iloc[:,6]-nu2))] 
+    z74_P2[i] = P2
     # for z5
     nu1 = z75.iloc[:,6][np.argmin(abs(z75.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z75.iloc[:,5][np.argmin(abs(z75.iloc[:,6]-nu2))] 
     z75_m2[i] = M2
+    P2 = z75.iloc[:,2][np.argmin(abs(z75.iloc[:,6]-nu2))] 
+    z75_P2[i] = P2
     # for z6
     nu1 = z76.iloc[:,6][np.argmin(abs(z76.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z76.iloc[:,5][np.argmin(abs(z76.iloc[:,6]-nu2))] 
     z76_m2[i] = M2
+    P2 = z76.iloc[:,2][np.argmin(abs(z76.iloc[:,6]-nu2))] 
+    z76_P2[i] = P2
 """
 Z6
 """    
@@ -214,6 +271,13 @@ z63_m2 = np.zeros(n)
 z64_m2 = np.zeros(n) 
 z65_m2 = np.zeros(n) 
 z66_m2 = np.zeros(n) 
+
+z61_P2 = np.zeros(n) 
+z62_P2 = np.zeros(n) 
+z63_P2 = np.zeros(n) 
+z64_P2 = np.zeros(n) 
+z65_P2 = np.zeros(n) 
+z66_P2 = np.zeros(n) 
 for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
@@ -222,31 +286,43 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z61.iloc[:,5][np.argmin(abs(z61.iloc[:,6]-nu2))] 
     z61_m2[i] = M2
+    P2 = z61.iloc[:,2][np.argmin(abs(z61.iloc[:,6]-nu2))] 
+    z61_P2[i] = P2
     # for z2
     nu1 = z62.iloc[:,6][np.argmin(abs(z62.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z62.iloc[:,5][np.argmin(abs(z62.iloc[:,6]-nu2))] 
     z62_m2[i] = M2
+    P2 = z62.iloc[:,2][np.argmin(abs(z62.iloc[:,6]-nu2))] 
+    z62_P2[i] = P2
     # for z3
     nu1 = z63.iloc[:,6][np.argmin(abs(z63.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z63.iloc[:,5][np.argmin(abs(z63.iloc[:,6]-nu2))] 
     z63_m2[i] = M2
+    P2 = z63.iloc[:,2][np.argmin(abs(z63.iloc[:,6]-nu2))] 
+    z63_P2[i] = P2
     # for z4
     nu1 = z64.iloc[:,6][np.argmin(abs(z64.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z64.iloc[:,5][np.argmin(abs(z64.iloc[:,6]-nu2))] 
     z64_m2[i] = M2
+    P2 = z64.iloc[:,2][np.argmin(abs(z64.iloc[:,6]-nu2))] 
+    z64_P2[i] = P2
     # for z5
     nu1 = z65.iloc[:,6][np.argmin(abs(z65.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z65.iloc[:,5][np.argmin(abs(z65.iloc[:,6]-nu2))] 
     z65_m2[i] = M2
+    P2 = z65.iloc[:,2][np.argmin(abs(z65.iloc[:,6]-nu2))] 
+    z65_P2[i] = P2
     # for z6
     nu1 = z66.iloc[:,6][np.argmin(abs(z66.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z66.iloc[:,5][np.argmin(abs(z66.iloc[:,6]-nu2))] 
     z66_m2[i] = M2
+    P2 = z66.iloc[:,2][np.argmin(abs(z66.iloc[:,6]-nu2))] 
+    z66_P2[i] = P2
 
 """
 Z5
@@ -262,6 +338,13 @@ z53_m2 = np.zeros(n)
 z54_m2 = np.zeros(n) 
 z55_m2 = np.zeros(n) 
 z56_m2 = np.zeros(n) 
+
+z51_P2 = np.zeros(n) 
+z52_P2 = np.zeros(n) 
+z53_P2 = np.zeros(n) 
+z54_P2 = np.zeros(n) 
+z55_P2 = np.zeros(n) 
+z56_P2 = np.zeros(n) 
 for i in range(50):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
@@ -270,31 +353,43 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z51.iloc[:,5][np.argmin(abs(z51.iloc[:,6]-nu2))] 
     z51_m2[i] = M2
+    P2 = z51.iloc[:,2][np.argmin(abs(z51.iloc[:,6]-nu2))] 
+    z51_P2[i] = P2
     # for z2
     nu1 = z52.iloc[:,6][np.argmin(abs(z52.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z52.iloc[:,5][np.argmin(abs(z52.iloc[:,6]-nu2))] 
     z52_m2[i] = M2
+    P2 = z52.iloc[:,2][np.argmin(abs(z52.iloc[:,6]-nu2))] 
+    z52_P2[i] = P2
     # for z3
     nu1 = z53.iloc[:,6][np.argmin(abs(z53.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z53.iloc[:,5][np.argmin(abs(z53.iloc[:,6]-nu2))] 
     z53_m2[i] = M2
+    P2 = z53.iloc[:,2][np.argmin(abs(z53.iloc[:,6]-nu2))] 
+    z53_P2[i] = P2
     # for z4
     nu1 = z54.iloc[:,6][np.argmin(abs(z54.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z54.iloc[:,5][np.argmin(abs(z54.iloc[:,6]-nu2))] 
     z54_m2[i] = M2
+    P2 = z54.iloc[:,2][np.argmin(abs(z54.iloc[:,6]-nu2))] 
+    z54_P2[i] = P2
     # for z5
     nu1 = z55.iloc[:,6][np.argmin(abs(z55.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z55.iloc[:,5][np.argmin(abs(z55.iloc[:,6]-nu2))] 
     z55_m2[i] = M2
+    P2 = z55.iloc[:,2][np.argmin(abs(z55.iloc[:,6]-nu2))] 
+    z55_P2[i] = P2
     # for z6
     nu1 = z56.iloc[:,6][np.argmin(abs(z56.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z56.iloc[:,5][np.argmin(abs(z56.iloc[:,6]-nu2))] 
     z56_m2[i] = M2
+    P2 = z56.iloc[:,2][np.argmin(abs(z56.iloc[:,6]-nu2))] 
+    z56_P2[i] = P2
 
 """
 2. plot
@@ -348,5 +443,45 @@ axes.set_ylabel('$M_2$',fontsize=12)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig1.savefig("mdm_z_M2_theta.eps")
 
+###############################################################################
+fig3 = plt.figure( dpi=300)
+lwh = 2
+axes = fig3.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
+# see  the corresponding coolprop.py, to see pp[i]]pt or Pc
+axes.plot(theta/math.pi*180  , (260413-z91_P2*423013)/260413 , color=colors[0], lw=lwh, label="$Z_t=0.9$")
+axes.plot(theta/math.pi*180  , (235724-z92_P2*383013)/235724 , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (210969-z93_P2*343013)/210969 , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (186412-z94_P2*303013)/186412 , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (161766-z95_P2*263013)/161766 , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (141004-z96_P2*223013)/141004 , color=colors[0], lw=lwh)
 
+axes.plot(theta/math.pi*180  , (488434.-z81_P2*775524)/488434. , color=colors[1], lw=lwh, label="$Z_t=0.8$")
+axes.plot(theta/math.pi*180  , (451555-z82_P2*715524)/451555 , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (412943-z83_P2*655524)/412943 , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (374861-z84_P2*595524)/374861 , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (337277-z85_P2* 535524)/337277 , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (299390-z86_P2*475524)/299390 , color=colors[1], lw=lwh)
+
+axes.plot(theta/math.pi*180  , (683215-z71_P2*1057533)/683215, color=colors[2], lw=lwh, label="$Z_t=0.7$")
+axes.plot(theta/math.pi*180  , (645503-z72_P2*1002533)/645503 , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (612488-z73_P2*947533)/612488 , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (575823-z74_P2*892533)/575823 , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (540515-z75_P2*837533)/540515, color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (504473-z76_P2*782533)/504473, color=colors[2], lw=lwh)
+
+axes.plot(theta/math.pi*180  , (842215-z61_P2*1269040)/842215, color=colors[3], lw=lwh, label="$Z_t=0.6$")
+axes.plot(theta/math.pi*180  , (806818-z62_P2*1219040)/806818 , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (781082-z63_P2*1169040.)/781082, color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (741140-z64_P2*1119040)/741140 , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (707672-z65_P2*1069040)/707672, color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (674505-z66_P2*1019040)/674505 , color=colors[3], lw=lwh)
+
+
+
+
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
+axes.set_ylabel('$\Delta P$',fontsize=12) 
+# axes.set_title('$Z_t = 0.9$',fontsize=14)
+axes.legend(loc=0 , prop={'size': 10}) # 
+fig3.savefig("mdm_z_dp_theta.eps")
 

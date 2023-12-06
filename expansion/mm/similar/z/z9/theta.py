@@ -48,7 +48,7 @@ z1_D2 = np.zeros(n)
 
 
 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1

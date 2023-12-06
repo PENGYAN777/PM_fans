@@ -40,7 +40,7 @@ print("critical pressure[Pa]:", Pc)
 """
 
 
-pt = Pc*0.7 - Pc*0.05*5.5# total pressure
+pt = Pc*0.7 - Pc*0.05*5# total pressure
 zt = 0.8
 tt,gt = TGfromZP(zt,pt)
 dt = CP.CoolProp.PropsSI('Dmass','P',pt,'T',tt,fluidname) 

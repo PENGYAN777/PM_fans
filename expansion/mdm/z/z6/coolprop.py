@@ -40,7 +40,7 @@ print("critical pressure[Pa]:", Pc)
 """
 
 # 1, 2.8, 3,4,5
-pt = Pc*0.9 - 0.5e5*0# total pressure
+pt = Pc*0.9 - 0.5e5*5# total pressure
 zt = 0.6
 tt,gt = TGfromZP(zt,pt)
 dt = CP.CoolProp.PropsSI('Dmass','P',pt,'T',tt,fluidname) 
@@ -103,11 +103,11 @@ for i in t.index:
         t[i] = 0.99*Tc/tt
     pp[i] = CP.CoolProp.PropsSI('P','T',t[i]*tt,'Dmass',D[i]*dt,fluidname)/pt
 
-pd.DataFrame(pp).to_csv('z1.csv', index_label = "Index", header  = ['pressure']) 
-data = pd.read_csv("z1.csv", ",")
+pd.DataFrame(pp).to_csv('z6.csv', index_label = "Index", header  = ['pressure']) 
+data = pd.read_csv("z6.csv", ",")
 # append new columns
 D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu})
 newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")
-newData.to_csv("z1.csv")
+newData.to_csv("z6.csv")
