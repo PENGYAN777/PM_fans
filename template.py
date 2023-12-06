@@ -369,40 +369,40 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("R218_z_M2_theta.eps")
+fig1.savefig("_z_M2_theta.eps")
 
 ###############################################################################
 fig3 = plt.figure( dpi=300)
 lwh = 2
 axes = fig3.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
 # see  the corresponding coolprop.py, to see pp[i]]pt or Pc
-axes.plot(theta/math.pi*180  , (1121801-z91_P2*1847999)/1121801, color=colors[0], lw=lwh, label="$Z_t=0.9$")
-axes.plot(theta/math.pi*180  , (1041597-z92_P2*1715999)/1041597 , color=colors[0], lw=lwh)
-axes.plot(theta/math.pi*180  , (960336-z93_P2*1583999)/960336 , color=colors[0], lw=lwh)
-axes.plot(theta/math.pi*180  , (881189-z94_P2*1451999)/881189, color=colors[0], lw=lwh)
-axes.plot(theta/math.pi*180  , (800984-z95_P2*1319999)/800984, color=colors[0], lw=lwh)
-axes.plot(theta/math.pi*180  , (719987-z96_P2*1187999)/719987 , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z91_P2*)/, color=colors[0], lw=lwh, label="$Z_t=0.9$")
+axes.plot(theta/math.pi*180  , (-z92_P2*)/ , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z93_P2*)/ , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z94_P2*)/, color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z95_P2*)/, color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z96_P2*)/ , color=colors[0], lw=lwh)
 
-axes.plot(theta/math.pi*180  , (1121801-z81_P2*1847999)/1121801 , color=colors[1], lw=lwh, label="$Z_t=0.8$")
-# axes.plot(theta/math.pi*180  , (-z82_P2*)/ , color=colors[1], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z83_P2*)/ , color=colors[1], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z84_P2*)/ , color=colors[1], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z85_P2* )/ , color=colors[1], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z86_P2*)/ , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z81_P2*)/ , color=colors[1], lw=lwh, label="$Z_t=0.8$")
+axes.plot(theta/math.pi*180  , (-z82_P2*)/ , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z83_P2*)/ , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z84_P2*)/ , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z85_P2* )/ , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z86_P2*)/ , color=colors[1], lw=lwh)
 
-# axes.plot(theta/math.pi*180  , (-z71_P2*)/, color=colors[2], lw=lwh, label="$Z_t=0.7$")
-# axes.plot(theta/math.pi*180  , (-z72_P2*)/ , color=colors[2], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z73_P2*)/ , color=colors[2], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z74_P2*)/, color=colors[2], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z75_P2*)/, color=colors[2], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z76_P2*)/, color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z71_P2*)/, color=colors[2], lw=lwh, label="$Z_t=0.7$")
+axes.plot(theta/math.pi*180  , (-z72_P2*)/ , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z73_P2*)/ , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z74_P2*)/, color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z75_P2*)/, color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z76_P2*)/, color=colors[2], lw=lwh)
 
-# axes.plot(theta/math.pi*180  , (-z61_P2*)/, color=colors[3], lw=lwh, label="$Z_t=0.6$")
-# axes.plot(theta/math.pi*180  , (-z62_P2*)/, color=colors[3], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z63_P2*)/, color=colors[3], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z64_P2*)/ , color=colors[3], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z65_P2*)/, color=colors[3], lw=lwh)
-# axes.plot(theta/math.pi*180  , (-z66_P2*)/ , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z61_P2*)/, color=colors[3], lw=lwh, label="$Z_t=0.6$")
+axes.plot(theta/math.pi*180  , (-z62_P2*)/, color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z63_P2*)/, color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z64_P2*)/ , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z65_P2*)/, color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (-z66_P2*)/ , color=colors[3], lw=lwh)
 
 
 
@@ -411,7 +411,7 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$\Delta P$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig3.savefig("R218_z_dp_theta.eps")
+fig3.savefig("_z_dp_theta.eps")
 
 
 
