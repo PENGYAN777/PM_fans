@@ -40,7 +40,7 @@ print("critical pressure[Pa]:", Pc)
 """
 
 
-pt = Pc*1.1 - Pc*0.1*5# total pressure
+pt = Pc*1.1 - Pc*0.1*0# total pressure
 zt = 0.9
 tt,gt = TGfromZP(zt,pt)
 dt = CP.CoolProp.PropsSI('Dmass','P',pt,'T',tt,fluidname) 
@@ -100,16 +100,20 @@ D = 1/V/dt
 t = T/tt
 t = pd.Series(t)
 pp = np.zeros(t.size) # Gamma
+# modificcation in coolprop.py file to record P1 and Pt
+ptp1 = np.zeros(t.size) # Pstar, pt
+ptp1[0] = Pstar
+ptp1[1] = pt
 for i in t.index:
     if abs(t[i]*tt-Tc)<0.01*Tc:
         t[i] = 0.99*Tc/tt
     pp[i] = CP.CoolProp.PropsSI('P','T',t[i]*tt,'Dmass',D[i]*dt,fluidname)/pt
 
-pd.DataFrame(pp).to_csv('z6.csv', index_label = "Index", header  = ['pressure']) 
-data = pd.read_csv("z6.csv", ",")
+pd.DataFrame(pp).to_csv('z1.csv', index_label = "Index", header  = ['pressure']) 
+data = pd.read_csv("z1.csv", ",")
 # append new columns
-D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu})
+D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu, 'p1': ptp1})
 newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")
-newData.to_csv("z6.csv")
+newData.to_csv("z1.csv")
