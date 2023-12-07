@@ -113,3 +113,6 @@ newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")
 newData.to_csv("z6.csv")
+
+print("P1[Pa]:", Pstar)
+print("Pt[Pa]:", pt)
