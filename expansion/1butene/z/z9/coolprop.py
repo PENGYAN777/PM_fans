@@ -40,7 +40,7 @@ print("critical pressure[Pa]:", Pc)
 """
 
 
-pt = Pc*0.5 - Pc*0.05*5# total pressure
+pt = Pc*0.5 - Pc*0.05*0# total pressure
 zt = 0.9
 tt,gt = TGfromZP(zt,pt)
 dt = CP.CoolProp.PropsSI('Dmass','P',pt,'T',tt,fluidname) 
@@ -100,6 +100,7 @@ D = 1/V/dt
 t = T/tt
 t = pd.Series(t)
 pp = np.zeros(t.size) # Gamma
+# modificcation in coolprop.py file to record P1 and Pt
 ptp1 = np.zeros(t.size) # Pstar, pt
 ptp1[0] = Pstar
 ptp1[1] = pt

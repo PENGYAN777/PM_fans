@@ -100,6 +100,9 @@ D = 1/V/dt
 t = T/tt
 t = pd.Series(t)
 pp = np.zeros(t.size) # Gamma
+ptp1 = np.zeros(t.size) # Pstar, pt
+ptp1[0] = Pstar
+ptp1[1] = pt
 for i in t.index:
     if abs(t[i]*tt-Tc)<0.01*Tc:
         t[i] = 0.99*Tc/tt
@@ -108,7 +111,7 @@ for i in t.index:
 pd.DataFrame(pp).to_csv('z6.csv', index_label = "Index", header  = ['pressure']) 
 data = pd.read_csv("z6.csv", ",")
 # append new columns
-D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu})
+D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu, 'p1': ptp1})
 newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")

@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Dec  6 10:46:40 2023
-
-@author: yan
-"""
-
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
 Created on Mon Jan 30 18:04:05 2023
 
 compute downstream Mach number  for nonideal flow
@@ -410,5 +402,8 @@ axes.set_ylabel('$\Delta P$',fontsize=12)
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig3.savefig("1Butene_z_dp_theta.eps")
+
+
+
 
 

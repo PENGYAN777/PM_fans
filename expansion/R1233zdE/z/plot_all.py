@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Dec  6 10:46:40 2023
-
-@author: yan
-"""
-
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
 Created on Mon Jan 30 18:04:05 2023
 
 compute downstream Mach number  for nonideal flow
@@ -369,49 +361,49 @@ axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig1.savefig("R1233zdE_z_M2_theta.eps")
+fig1.savefig("R1233zd(E)_z_M2_theta.eps")
 
 ###############################################################################
 fig3 = plt.figure( dpi=300)
 lwh = 2
 axes = fig3.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
 # see  the corresponding coolprop.py, to see pp[i]]pt or Pc
-axes.plot(theta/math.pi*180  , (1310893-z91_P2*2174182)/1310893, color=colors[0], lw=lwh, label="$Z_t=0.9$")
-axes.plot(theta/math.pi*180  , (1201350-z92_P2*1993000)/1201350. , color=colors[0], lw=lwh)
-axes.plot(theta/math.pi*180  , (1092169-z93_P2*1811818)/1092169 , color=colors[0], lw=lwh)
-axes.plot(theta/math.pi*180  , (983170-z94_P2*1630636)/983170, color=colors[0], lw=lwh)
-axes.plot(theta/math.pi*180  , (873808.-z95_P2*1449455)/873808., color=colors[0], lw=lwh)
-axes.plot(theta/math.pi*180  , (764083-z96_P2*1268273)/764083 , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (z91.iloc[0,-1]-z91_P2*z91.iloc[1,-1])/z91.iloc[0,-1], color=colors[0], lw=lwh, label="$Z_t=0.9$")
+axes.plot(theta/math.pi*180  , (z92.iloc[0,-1]-z92_P2*z92.iloc[1,-1])/z92.iloc[0,-1] , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (z93.iloc[0,-1]-z93_P2*z93.iloc[1,-1])/z93.iloc[0,-1] , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (z94.iloc[0,-1]-z94_P2*z94.iloc[1,-1])/z94.iloc[0,-1] , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (z95.iloc[0,-1]-z95_P2*z95.iloc[1,-1])/z95.iloc[0,-1] , color=colors[0], lw=lwh)
+axes.plot(theta/math.pi*180  , (z96.iloc[0,-1]-z96_P2*z96.iloc[1,-1])/z96.iloc[0,-1] , color=colors[0], lw=lwh)
 
-axes.plot(theta/math.pi*180  , (2451668-z81_P2*3986001)/ 2451668, color=colors[1], lw=lwh, label="$Z_t=0.8$")
-axes.plot(theta/math.pi*180  , (2226415-z82_P2*3623637)/2226415 , color=colors[1], lw=lwh)
-axes.plot(theta/math.pi*180  , (2004789-z83_P2*3261273)/2004789 , color=colors[1], lw=lwh)
-axes.plot(theta/math.pi*180  , (1781712-z84_P2* 2898910.)/1781712 , color=colors[1], lw=lwh)
-axes.plot(theta/math.pi*180  , (1559361.-z85_P2* 2536546)/1559361. , color=colors[1], lw=lwh)
-axes.plot(theta/math.pi*180  , (1336284-z86_P2*2174182)/1336284 , color=colors[1], lw=lwh)
-
-axes.plot(theta/math.pi*180  , (3186915-z71_P2*5073092)/3186915, color=colors[2], lw=lwh, label="$Z_t=0.7$")
-axes.plot(theta/math.pi*180  , (2960936-z72_P2*4710729)/2960936 , color=colors[2], lw=lwh)
-axes.plot(theta/math.pi*180  , (2732418-z73_P2*4348365)/2732418 , color=colors[2], lw=lwh)
-axes.plot(theta/math.pi*180  , (2732418-z74_P2*4348365)/2732418, color=colors[2], lw=lwh)
-axes.plot(theta/math.pi*180  , (2048316-z75_P2*3261273)/2048316, color=colors[2], lw=lwh)
-axes.plot(theta/math.pi*180  , (1592006-z76_P2*2536546)/1592006, color=colors[2], lw=lwh)
-
-axes.plot(theta/math.pi*180  , (4642173-z61_P2*7247275)/4642173, color=colors[3], lw=lwh, label="$Z_t=0.6$")
-axes.plot(theta/math.pi*180  , (4185501-z62_P2*6522547)/4185501, color=colors[3], lw=lwh)
-axes.plot(theta/math.pi*180  , (3806451-z63_P2*5797820)/3806451, color=colors[3], lw=lwh)
-axes.plot(theta/math.pi*180  , (3271793-z64_P2*5073092)/3271793 , color=colors[3], lw=lwh)
-axes.plot(theta/math.pi*180  , (2804238-z65_P2*4348365)/2804238, color=colors[3], lw=lwh)
-axes.plot(theta/math.pi*180  , ( 2337409-z66_P2* 3623637)/ 2337409 , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (z81.iloc[0,-1]-z81_P2*z81.iloc[1,-1])/z81.iloc[0,-1], color=colors[1], lw=lwh, label="$Z_t=0.8$")
+axes.plot(theta/math.pi*180  , (z82.iloc[0,-1]-z82_P2*z82.iloc[1,-1])/z82.iloc[0,-1] , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (z83.iloc[0,-1]-z83_P2*z83.iloc[1,-1])/z83.iloc[0,-1] , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (z84.iloc[0,-1]-z84_P2*z84.iloc[1,-1])/z84.iloc[0,-1] , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (z85.iloc[0,-1]-z85_P2*z85.iloc[1,-1])/z85.iloc[0,-1] , color=colors[1], lw=lwh)
+axes.plot(theta/math.pi*180  , (z86.iloc[0,-1]-z86_P2*z86.iloc[1,-1])/z86.iloc[0,-1] , color=colors[1], lw=lwh)
 
 
+axes.plot(theta/math.pi*180  , (z71.iloc[0,-1]-z71_P2*z71.iloc[1,-1])/z71.iloc[0,-1], color=colors[2], lw=lwh, label="$Z_t=0.7$")
+axes.plot(theta/math.pi*180  , (z72.iloc[0,-1]-z72_P2*z72.iloc[1,-1])/z72.iloc[0,-1] , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (z73.iloc[0,-1]-z73_P2*z73.iloc[1,-1])/z73.iloc[0,-1] , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (z74.iloc[0,-1]-z74_P2*z74.iloc[1,-1])/z74.iloc[0,-1] , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (z75.iloc[0,-1]-z75_P2*z75.iloc[1,-1])/z75.iloc[0,-1] , color=colors[2], lw=lwh)
+axes.plot(theta/math.pi*180  , (z76.iloc[0,-1]-z76_P2*z76.iloc[1,-1])/z76.iloc[0,-1] , color=colors[2], lw=lwh)
 
+axes.plot(theta/math.pi*180  , (z61.iloc[0,-1]-z61_P2*z61.iloc[1,-1])/z61.iloc[0,-1], color=colors[3], lw=lwh, label="$Z_t=0.6$")
+axes.plot(theta/math.pi*180  , (z62.iloc[0,-1]-z62_P2*z62.iloc[1,-1])/z62.iloc[0,-1] , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (z63.iloc[0,-1]-z63_P2*z63.iloc[1,-1])/z63.iloc[0,-1] , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (z64.iloc[0,-1]-z64_P2*z64.iloc[1,-1])/z64.iloc[0,-1] , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (z65.iloc[0,-1]-z65_P2*z65.iloc[1,-1])/z65.iloc[0,-1] , color=colors[3], lw=lwh)
+axes.plot(theta/math.pi*180  , (z66.iloc[0,-1]-z66_P2*z66.iloc[1,-1])/z66.iloc[0,-1] , color=colors[3], lw=lwh)
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$\Delta P$',fontsize=12) 
 # axes.set_title('$Z_t = 0.9$',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
-fig3.savefig("R1233zdE_z_dp_theta.eps")
+fig3.savefig("R1233zd(E)_z_dp_theta.eps")
+
+
 
 
 
