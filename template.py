@@ -71,7 +71,7 @@ z94_P2 = np.zeros(n)
 z95_P2 = np.zeros(n) 
 z96_P2 = np.zeros(n) 
 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -138,7 +138,7 @@ z84_P2 = np.zeros(n)
 z85_P2 = np.zeros(n) 
 z86_P2 = np.zeros(n) 
 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -204,7 +204,7 @@ z73_P2 = np.zeros(n)
 z74_P2 = np.zeros(n) 
 z75_P2 = np.zeros(n) 
 z76_P2 = np.zeros(n) 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1
@@ -270,7 +270,7 @@ z63_P2 = np.zeros(n)
 z64_P2 = np.zeros(n) 
 z65_P2 = np.zeros(n) 
 z66_P2 = np.zeros(n) 
-for i in range(50):
+for i in range(n):
     theta[i] = i*math.pi/180 # rad
     M1 = 1.0 # upstream Mach number
     # for z1

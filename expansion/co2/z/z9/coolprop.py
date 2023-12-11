@@ -97,9 +97,9 @@ Pstar = p[np.argmin(abs(m-1))]
 # # z3,z4
 # V,T,M,nu = rk4(vstar, 7*vstar, Tstar, 1, 0, 1000)
 # # z5
-V,T,M,nu = rk4(vstar, 6*vstar, Tstar, 1, 0, 1000)
+# V,T,M,nu = rk4(vstar, 6*vstar, Tstar, 1, 0, 1000)
 # z6
-# V,T,M,nu = rk4(vstar, 5*vstar, Tstar, 1, 0, 1000)
+V,T,M,nu = rk4(vstar, 5*vstar, Tstar, 1, 0, 1000)
 """
 5. write into csv file
 """    
@@ -108,6 +108,10 @@ D = 1/V/dt
 t = T/tt
 t = pd.Series(t)
 pp = np.zeros(t.size) # Gamma
+# modificcation in coolprop.py file to record P1 and Pt
+ptp1 = np.zeros(t.size) # Pstar, pt
+ptp1[0] = Pstar
+ptp1[1] = pt
 for i in t.index:
     if abs(t[i]*tt-Tc)<0.01*Tc:
         t[i] = 0.99*Tc/tt
@@ -116,7 +120,7 @@ for i in t.index:
 pd.DataFrame(pp).to_csv('z6.csv', index_label = "Index", header  = ['pressure']) 
 data = pd.read_csv("z6.csv", ",")
 # append new columns
-D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu})
+D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu, 'p1': ptp1})
 newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")
