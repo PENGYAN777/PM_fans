@@ -22,22 +22,22 @@ c10 = pd.read_csv("c10.csv", ",", skiprows=0)
 
 
 
-# # fig 2
-# fig2 = plt.figure( dpi=300)
-# lw = 2
-# axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-# axes.plot(c9.iloc[:,-3] ,c9.iloc[:,2] , 'k', lw=lw, label="n = 32k")
-# axes.plot(c10.iloc[:,-3] ,c10.iloc[:,2], 'k--', lw=lw, label="n = 40k")
+# fig 2
+fig2 = plt.figure( dpi=300)
+lw = 2
+axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
+axes.plot(c9.iloc[:,-3] ,c9.iloc[:,2] , 'k', lw=lw, label="n = 32k")
+axes.plot(c10.iloc[:,-3] ,c10.iloc[:,2], 'k--', lw=lw, label="n = 40k")
 
-# axes.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
-# # axes.set_xlim([40, 160])
-# # axes.set_ylim([1,1.3])
-# axes.set_xlabel('$X[mm]$',fontsize=12)
-# axes.set_ylabel('Mach',fontsize=12) 
-# # axes.set_title('$P/P_t$ along nozzle centerline',fontsize=14)
-# axes.legend(loc=0) # 
+axes.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+# axes.set_xlim([40, 160])
+# axes.set_ylim([1,1.3])
+axes.set_xlabel('$X[mm]$',fontsize=12)
+axes.set_ylabel('Mach',fontsize=12) 
+# axes.set_title('$P/P_t$ along nozzle centerline',fontsize=14)
+axes.legend(loc=0) # 
 
-# fig2.savefig("cfd_mm_5d_mach.pdf")
+fig2.savefig("cfd_mm_5d_mach.pdf")
 
 
 # fig 3
