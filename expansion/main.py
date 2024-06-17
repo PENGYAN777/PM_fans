@@ -12,7 +12,7 @@ import CoolProp as CP
 
 # compute active degree of freedom
 print("------------compute N-----------")
-fluidname = "HEOS::MM"
+fluidname = "HEOS::Nitrogen"
 # fluidname = "HEOS::D6"
 Pc = CP.CoolProp.PropsSI('Pcrit',fluidname)
 Tc = CP.CoolProp.PropsSI('Tcrit',fluidname)

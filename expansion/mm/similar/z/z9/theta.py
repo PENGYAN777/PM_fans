@@ -152,6 +152,8 @@ axes.set_ylabel('$M_2$',fontsize=12)
 # axes.set_title('Theoretical solutions vs numerical results',fontsize=14)
 axes.legend(loc=0 , prop={'size': 10}) # 
 fig2.savefig("cfd_mm_z9.eps")
+
+
 ################################################################
 fig3 = plt.figure( dpi=300)
 lwh = 2
