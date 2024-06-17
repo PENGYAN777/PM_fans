@@ -12,9 +12,13 @@ import CoolProp as CP
 
 # compute active degree of freedom
 print("------------compute N-----------")
-fluidname = "MM"
+fluidname = "HEOS::MM"
+# fluidname = "HEOS::D6"
 Pc = CP.CoolProp.PropsSI('Pcrit',fluidname)
 Tc = CP.CoolProp.PropsSI('Tcrit',fluidname)
+dc = CP.CoolProp.PropsSI('rhocrit',fluidname)
+vc = 1/dc
+w = CP.CoolProp.PropsSI('ACENTRIC',fluidname)
 print("fluid name:", fluidname)
 R = CP.CoolProp.PropsSI('GAS_CONSTANT',fluidname)
 print("Universal gas constant:", R)
@@ -22,15 +26,12 @@ MW = CP.CoolProp.PropsSI('M',fluidname)
 print("molar mass:", MW)
 Rs = R/MW
 print("specific gas constant:", Rs)
-n1 = 1.0
-n2 = 0.1
-cv = CP.CoolProp.PropsSI('CVMASS','T', Tc*n1, 'P', Pc*n2,  fluidname)
-Z = CP.CoolProp.PropsSI('Z','T', Tc*n1, 'P', Pc*n2,  fluidname)
-print("Z = :", Z)   
-N = 2*cv/Rs
-print("N = :", N)
-print('-----------------')
-P = 1.57e6
-T = 239+273.15
-Z = CP.CoolProp.PropsSI('Z','T', T, 'P', P,  fluidname)
-print("Z = :", Z)  
+CP.CoolProp.get_global_param_string("HOME")
+# fluidname = "PR::MD4M"
+# G = CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics', 'P',P,'T', T,fluidname)
+# print("G = :", G)  
+P = 5.34e5
+T = 496
+cv = CP.CoolProp.PropsSI('CVMASS','T', T, 'P', P,  fluidname)
+cp = CP.CoolProp.PropsSI('CPMASS','T', T, 'P', P,  fluidname)
+Z = CP.CoolProp.PropsSI('Z', 'P',P,'T', T,fluidname)

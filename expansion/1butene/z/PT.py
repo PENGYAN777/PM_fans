@@ -57,7 +57,7 @@ Gamma =  CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics','T',X,'P',
 levels = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 cp = plt.contour(X, Y, Z, levels, colors='black', linestyles='dashed')
 plt.clabel(cp, inline=True,  fontsize=10)
-plt.contourf(X, Y, Gamma, [0.8,0.9,1.0,1.1,1.2,1.3,1.4], cmap='rainbow')
+plt.contourf(X, Y, Gamma, [0.8,0.9,1.0,1.1,1.2,1.3,1.4], cmap='rainbow', linewidths=1.0)
 plt.colorbar()
 # ------
 # Labels
