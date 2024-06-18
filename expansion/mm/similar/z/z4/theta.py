@@ -30,9 +30,13 @@ z6= pd.read_csv("z6.csv", ",", skiprows=0)
 """
 n = 50
 theta = np.zeros(n) # rad
-smallest = np.zeros(n) # min
-largest = np.zeros(n) # max
-diff = np.zeros(n) # diff
+smallest_m = np.zeros(n) # min Mach
+largest_m = np.zeros(n) # max Mach
+diff_m = np.zeros(n) # diff Mach
+
+smallest_p = np.zeros(n) # min P
+largest_p = np.zeros(n) # max P
+diff_p = np.zeros(n) # diff P
 
 z1_m2 = np.zeros(n) 
 z2_m2 = np.zeros(n) 
@@ -42,11 +46,13 @@ z5_m2 = np.zeros(n)
 z6_m2 = np.zeros(n) 
 
 
-# z91_P2 = np.zeros(n) 
+z1_P2 = np.zeros(n) 
+z2_P2 = np.zeros(n) 
+z3_P2 = np.zeros(n) 
+z4_P2 = np.zeros(n) 
+z5_P2 = np.zeros(n) 
+z6_P2 = np.zeros(n) 
 
-# z91_T2 = np.zeros(n) 
-
-# z91_D2 = np.zeros(n) 
 
 
 
@@ -58,43 +64,53 @@ for i in range(50):
     nu2 = nu1 + theta[i]
     M2 = z1.iloc[:,5][np.argmin(abs(z1.iloc[:,6]-nu2))] 
     z1_m2[i] = M2
-    # P2 = z91.iloc[:,2][np.argmin(abs(z91.iloc[:,6]-nu2))] 
-    # z91_P2[i] = P2
-    # D2 = z91.iloc[:,3][np.argmin(abs(z91.iloc[:,6]-nu2))] 
-    # z91_D2[i] = D2
-    # T2 = z91.iloc[:,4][np.argmin(abs(z91.iloc[:,6]-nu2))] 
-    # z91_T2[i] = T2
+    P2 = z1.iloc[:,2][np.argmin(abs(z1.iloc[:,6]-nu2))] 
+    z1_P2[i] = P2
     # for z2
     nu1 = z2.iloc[:,6][np.argmin(abs(z2.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z2.iloc[:,5][np.argmin(abs(z2.iloc[:,6]-nu2))] 
     z2_m2[i] = M2
+    P2 = z2.iloc[:,2][np.argmin(abs(z2.iloc[:,6]-nu2))] 
+    z2_P2[i] = P2
     # for z3
     nu1 = z3.iloc[:,6][np.argmin(abs(z3.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z3.iloc[:,5][np.argmin(abs(z3.iloc[:,6]-nu2))] 
     z3_m2[i] = M2
+    P2 = z3.iloc[:,2][np.argmin(abs(z4.iloc[:,6]-nu2))] 
+    z3_P2[i] = P2
     # for z4
     nu1 = z4.iloc[:,6][np.argmin(abs(z4.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z4.iloc[:,5][np.argmin(abs(z4.iloc[:,6]-nu2))] 
     z4_m2[i] = M2
+    P2 = z4.iloc[:,2][np.argmin(abs(z4.iloc[:,6]-nu2))] 
+    z4_P2[i] = P2
     # for z5
     nu1 = z5.iloc[:,6][np.argmin(abs(z5.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z5.iloc[:,5][np.argmin(abs(z5.iloc[:,6]-nu2))] 
     z5_m2[i] = M2
+    P2 = z5.iloc[:,2][np.argmin(abs(z5.iloc[:,6]-nu2))] 
+    z5_P2[i] = P2
     # for z6
     nu1 = z6.iloc[:,6][np.argmin(abs(z6.iloc[:,5]-M1))] 
     nu2 = nu1 + theta[i]
     M2 = z6.iloc[:,5][np.argmin(abs(z6.iloc[:,6]-nu2))] 
     z6_m2[i] = M2
+    P2 = z6.iloc[:,2][np.argmin(abs(z6.iloc[:,6]-nu2))] 
+    z6_P2[i] = P2
     
+    smallest_m[i] = min([z1_m2[i],z2_m2[i],z3_m2[i],z4_m2[i],z5_m2[i], z6_m2[i] ])
+    largest_m[i] = max([z1_m2[i],z2_m2[i],z3_m2[i],z4_m2[i],z5_m2[i], z6_m2[i] ])
+    diff_m[i] = (largest_m[i]-smallest_m[i])/largest_m[i] * 100
     
-    smallest[i] = min([z1_m2[i],z2_m2[i],z3_m2[i],z4_m2[i],z5_m2[i], z6_m2[i] ])
-    largest[i] = max([z1_m2[i],z2_m2[i],z3_m2[i],z4_m2[i],z5_m2[i], z6_m2[i] ])
-    diff[i] = (largest[i]-smallest[i])/largest[i] * 100
-
+    smallest_p[i] = min([ (2841787-z1_P2[i]*1939000)/2841787, (2601013-z2_P2[i]*1939000)/2601013, (2333376-z3_P2[i]*1939000)/2333376,
+                         (2048691-z4_P2[i]*1939000)/2048691, (1737507-z5_P2[i]*1939000)/1737507, (1417853-z6_P2[i]*1939000)/1417853 ]) 
+    largest_p[i] = max([ (2841787-z1_P2[i]*1939000)/2841787, (2601013-z2_P2[i]*1939000)/2601013, (2333376-z3_P2[i]*1939000)/2333376,
+                         (2048691-z4_P2[i]*1939000)/2048691, (1737507-z5_P2[i]*1939000)/1737507, (1417853-z6_P2[i]*1939000)/1417853 ])
+    diff_p[i] = (largest_p[i]-smallest_p[i])/largest_p[i] * 100
 
     
 
@@ -108,21 +124,45 @@ colors = plt.cm.tab20(np.linspace(0, 1, n))
 fig1 = plt.figure( dpi=300)
 lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , color=colors[5], alpha=0.1, lw=lwh, label="Z41")
-axes.plot(theta/math.pi*180  , z2_m2 , color=colors[5], alpha=0.2,lw=lwh, label="Z42")
-axes.plot(theta/math.pi*180  , z3_m2 , color=colors[5], alpha=0.3, lw=lwh, label="Z43")
-axes.plot(theta/math.pi*180  , z4_m2 , color=colors[5], alpha=0.4, lw=lwh, label="Z44")
-axes.plot(theta/math.pi*180  , z5_m2 , color=colors[5], alpha=0.5, lw=lwh, label="Z45")
-axes.plot(theta/math.pi*180  , z6_m2 , color=colors[5], alpha=0.6, lw=lwh, label="Z46")
+axes.plot(theta/math.pi*180  , z1_m2 , color=colors[1], alpha=0.1, lw=lwh, label="Z41")
+axes.plot(theta/math.pi*180  , z2_m2 , color=colors[1], alpha=0.2,lw=lwh, label="Z42")
+axes.plot(theta/math.pi*180  , z3_m2 , color=colors[1], alpha=0.3, lw=lwh, label="Z43")
+axes.plot(theta/math.pi*180  , z4_m2 , color=colors[1], alpha=0.4, lw=lwh, label="Z44")
+axes.plot(theta/math.pi*180  , z5_m2 , color=colors[1], alpha=0.5, lw=lwh, label="Z45")
+axes.plot(theta/math.pi*180  , z6_m2 , color=colors[1], alpha=0.6, lw=lwh, label="Z46")
+
 ax2 = axes.twinx()
-ax2.plot(theta/math.pi*180  , diff , 'k*', lw=lwh)
+ax2.plot(theta/math.pi*180  , diff_m , 'k*', lw=lwh)
 ax2.set_ylabel('$\\Delta M_2$(%)',fontsize=12)
 
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$M_2$',fontsize=12) 
-axes.set_title('$Z_t = 0.4$',fontsize=14)
+axes.set_title('$Z_t = 0.8$',fontsize=14)
 # axes.legend(loc=4 , prop={'size': 10}) # 
-fig1.savefig("mm_z4_M2_theta.eps")
+fig1.savefig("mm_Z4_M2_theta.eps")
+
+###################################################################
+
+fig2 = plt.figure( dpi=300)
+lwh = 2
+axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
+axes.plot(theta/math.pi*180  , (2841787-z1_P2*1939000)/2841787, color=colors[1], alpha=0.1, lw=lwh, label="Z41")
+axes.plot(theta/math.pi*180  , (2601013-z2_P2*1939000)/2601013 , color=colors[1], alpha=0.2,lw=lwh, label="Z42")
+axes.plot(theta/math.pi*180  , (2333376-z3_P2*1939000)/2333376 , color=colors[1], alpha=0.3, lw=lwh, label="Z43")
+axes.plot(theta/math.pi*180  ,  (2048691-z4_P2*1939000)/2048691, color=colors[1], alpha=0.4, lw=lwh, label="Z44")
+axes.plot(theta/math.pi*180  , (1737507-z5_P2*1939000)/1737507 , color=colors[1], alpha=0.5, lw=lwh, label="Z45")
+axes.plot(theta/math.pi*180  , (1417853-z6_P2*1939000)/1417853 , color=colors[1], alpha=0.6, lw=lwh, label="Z46")
+
+ax2 = axes.twinx()
+ax2.plot(theta/math.pi*180  , abs(diff_p) , 'k*', lw=lwh)
+ax2.set_ylabel('diff of $\\Delta P$(%)',fontsize=12)
+# ax2.set_ylim(0,2 )
+
+axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
+axes.set_ylabel('$\\Delta P$',fontsize=12) 
+axes.set_title('$Z_t = 0.8$',fontsize=14)
+# axes.legend(loc=4 , prop={'size': 10}) # 
+fig2.savefig("mm_Z4_P2_theta.eps")
 
 
