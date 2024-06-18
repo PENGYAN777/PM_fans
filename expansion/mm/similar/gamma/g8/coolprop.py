@@ -19,6 +19,9 @@ from matplotlib.ticker import FormatStrFormatter
 import CoolProp as CP
 from newIOpairs import TGfromZP, PGfromZT, PTfromZG, ZPfromTG, ZTfromPG, ZGfromPT
 from RK4 import rk4
+import time
+# Start time
+start_time = time.time()
 
 """
 0. fluid property
@@ -73,3 +76,10 @@ newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")
 newData.to_csv("z6.csv")
+
+# End time
+end_time = time.time()
+
+# Elapsed time
+elapsed_time = end_time - start_time
+print(f"Elapsed time: {elapsed_time} seconds")
