@@ -20,6 +20,11 @@ lwh = 2
 axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
 
 zt = [0.6,0.7,0.8,0.9]
+zt1 = [item - 0.03 for item in zt]
+zt2 = [item - 0.01 for item in zt]
+zt3 = [item + 0.01 for item in zt]
+zt4 = [item + 0.03 for item in zt]
+
 maxdiff_nr22 = [ 1.4, 1.35, 1.0, 0.7] 
 maxdiff_nr1233 = [ 1.7, 1.1,0.6, 0.4 ] 
 maxdiff_nr218 = [ 1.9, 1.0, 1.2, 0.2  ] 
@@ -27,10 +32,10 @@ maxdiff_nrc318 = [2.5, 1.2, 0.7, 0.2]
 
 
 wh = 0.02
-plt.bar(zt,maxdiff_nr22,color=colors[0], width = wh,label="$R22$")
-plt.bar(zt,maxdiff_nr1233,color=colors[1], width = wh,label="$R1233zd(E)$")
-plt.bar(zt,maxdiff_nr218,color=colors[2], width = wh,label="$R218$")
-plt.bar(zt,maxdiff_nrc318,color=colors[3], width = wh,label="$RC318$")
+plt.bar(zt1,  maxdiff_nr22,color=colors[0], width = wh,label="$R22$")
+plt.bar(zt2,  maxdiff_nr1233,color=colors[1], width = wh,label="$R1233zd(E)$")
+plt.bar(zt3, maxdiff_nr218,color=colors[2], width = wh,label="$R218$")
+plt.bar(zt4, maxdiff_nrc318,color=colors[3], width = wh,label="$RC318$")
 plt.xticks(np.arange(min(zt), max(zt)+1, 0.1))
 
 axes.set_xlim([0.55, 0.95])
