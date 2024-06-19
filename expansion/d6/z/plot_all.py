@@ -404,6 +404,40 @@ axes.legend(loc=0 , prop={'size': 10}) #
 fig3.savefig("d6_z_dp_theta.eps")
 
 
+################################################################################
+fig2 = plt.figure( dpi=300)
+lwh = 2
+axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
+
+zt = [ 0.6,0.7,0.8,0.9]
+maxdiff_m = [0.07, 0.27,  0.65, 0.83,  ] 
+maxdiff_m.reverse()
+
+
+plt.bar(zt,maxdiff_m,color ='b', width = 0.02)
+axes.set_xlabel('$Z_t$',fontsize=12)
+axes.set_ylabel('$(\Delta M_2)_{\max}\%$',fontsize=12) 
+# axes.set_title('$Z_t = 0.9$',fontsize=14)
+# axes.legend(loc=0 , prop={'size': 10}) # 
+fig2.savefig("d6_z_M2_zt.eps")
+
+###############################################################################
+fig4 = plt.figure( dpi=300)
+lwh = 2
+axes = fig4.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
+
+zt = [ 0.6,0.7,0.8,0.9]
+maxdiff_p = [0.32, 0.20, 0.25,  0.25,  ] 
+maxdiff_p.reverse()
+
+
+plt.bar(zt,maxdiff_p,color ='b', width = 0.02)
+axes.set_xlabel('$Z_t$',fontsize=12)
+axes.set_ylabel('$\Delta(\Delta P)_{\max}\%$',fontsize=12) 
+# axes.set_title('$Z_t = 0.9$',fontsize=14)
+# axes.legend(loc=0 , prop={'size': 10}) # 
+fig4.savefig("d6_z_P2_zt.eps")
+
 
 
 
