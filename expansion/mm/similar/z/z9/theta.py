@@ -160,7 +160,7 @@ ax2.set_ylabel('diff of $\\Delta P$(%)',fontsize=12)
 
 axes.set_xlabel('$\\theta$ $[^o]$',fontsize=12)
 axes.set_ylabel('$\\Delta P$',fontsize=12) 
-axes.set_title('$Z_t = 0.8$',fontsize=14)
+axes.set_title('$Z_t = 0.9$',fontsize=14)
 # axes.legend(loc=4 , prop={'size': 10}) # 
 fig4.savefig("mm_z9_P2_theta.eps")
 
