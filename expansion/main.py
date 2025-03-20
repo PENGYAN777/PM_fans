@@ -9,10 +9,11 @@ main function of CoolProp extensions
 """
 import os
 import CoolProp as CP
+import math
 
 # compute active degree of freedom
 print("------------compute N-----------")
-fluidname = "HEOS::Nitrogen"
+fluidname = "HEOS::AIR"
 # fluidname = "HEOS::D6"
 Pc = CP.CoolProp.PropsSI('Pcrit',fluidname)
 Tc = CP.CoolProp.PropsSI('Tcrit',fluidname)
@@ -30,8 +31,16 @@ CP.CoolProp.get_global_param_string("HOME")
 # fluidname = "PR::MD4M"
 # G = CP.CoolProp.PropsSI('fundamental_derivative_of_gas_dynamics', 'P',P,'T', T,fluidname)
 # print("G = :", G)  
-P = 5.34e5
-T = 496
+
+P = 180
+T = 51.4
+# c = CP.CoolProp.PropsSI('A','T', t, 'P', p,  fluidname)
+# d = CP.CoolProp.PropsSI('Dmass','T', t, 'P', p,  fluidname)
+# m = 1e-2
+# u =c*m
+
+
 cv = CP.CoolProp.PropsSI('CVMASS','T', T, 'P', P,  fluidname)
 cp = CP.CoolProp.PropsSI('CPMASS','T', T, 'P', P,  fluidname)
+g = cp/cv
 Z = CP.CoolProp.PropsSI('Z', 'P',P,'T', T,fluidname)

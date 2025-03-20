@@ -42,18 +42,40 @@ plot
 # print('average diff:',diff)
 
 
-fig2 = plt.figure( dpi=300)
-lwh = 2
-axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(z34.iloc[:,5] , z34.iloc[:,6] , 'k', lw=lwh, label="4th order RK")
-axes.plot(num.iloc[:,0] , num.iloc[:,1] , 'ko', lw=lwh/2, label="Cramer et.al 1992")
+# Sort the data based on num.iloc[:,1] (x-axis values)
+sorted_indices = np.argsort(num.iloc[:,1])
 
-axes.set_xlabel('Mach',fontsize=12)
-axes.set_ylabel('$\\nu$',fontsize=12) 
-plt.xlim([1, 1.75])
-# axes.set_title('$\\nu$ vs Mach number',fontsize=14)
-axes.legend(loc=0 , prop={'size': 10}) # 
+# Apply the sorted indices to both num.iloc[:,0] and num.iloc[:,1]
+sorted_x = num.iloc[sorted_indices, 1]
+sorted_y = num.iloc[sorted_indices, 0]
+
+fig2 = plt.figure(dpi=300)
+lwh = 2
+axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7])  # size of figure
+
+# Plot 4th order RK data
+axes.plot(z34.iloc[:,6], z34.iloc[:,5], 'k', lw=lwh, label="4th order RK")
+
+# Plot the sorted Cramer et.al 1992 data as points
+axes.plot(sorted_x, sorted_y, 'ko', lw=lwh/2, label="Cramer et.al 1992")
+
+# Add 5% shaded region around sorted num.iloc[:,0] values
+lower_bound = sorted_y * 0.95  # 5% below the values
+upper_bound = sorted_y * 1.05  # 5% above the values
+
+# Fill the region between the bounds with lightgreen color
+axes.fill_between(sorted_x, lower_bound, upper_bound, color='gray', alpha=0.1, label="±5% Error Band")
+
+axes.set_ylabel('Mach', fontsize=12)
+axes.set_xlabel('$\\nu$', fontsize=12)
+plt.xlim([0, 1.1])
+
+# Set legend
+axes.legend(loc=0, prop={'size': 10})
+
+# Save figure
 fig2.savefig("vv_num.eps")
+
 
 # diff = 0
 # for i in range(0,13,1):

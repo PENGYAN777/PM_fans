@@ -86,4 +86,4 @@ plt.text(0.7, -0.2, '$M_2$', rotation = -30,ha= 'center')
 
 axes.set_aspect('equal', 'box')
 plt.axis('off')
-fig2.savefig("geo_turning.eps")
+fig2.savefig("geo_turning.png")
