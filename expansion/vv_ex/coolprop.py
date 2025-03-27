@@ -40,18 +40,19 @@ dc = CP.CoolProp.PropsSI('Dmass','P',Pc,'T',Tc,fluidname)
 1. input total conditions
 """
 
-pt = 2.01*Pc # total pressure
-tt = 1.07*Tc
+
+pt = 1.484e6 # total pressure
+tt = 237.49 + 273.15
+Zt = CP.CoolProp.PropsSI('Z','P',pt,'T',tt,fluidname) 
 dt = CP.CoolProp.PropsSI('Dmass','P',pt,'T',tt,fluidname) 
 s = CP.CoolProp.PropsSI('Smass','P',pt,'T',tt,fluidname) 
 ht = CP.CoolProp.PropsSI('Hmass','P',pt,'T',tt,fluidname) 
-Zt = CP.CoolProp.PropsSI('Z','P',pt,'T',tt,fluidname) 
-print("Zt:",Zt)
 """
 2. compute isentropic relationship
 """
 
-p = np.linspace(Pc*1.1,pt,1000) # pressure 
+p = np.linspace(pt*0.1,pt,1000) # P<Pc
+
 p = pd.Series(p)
 Z = np.zeros(p.size) # P/rho RT
 h = np.zeros(p.size) # enthalpy
@@ -64,6 +65,8 @@ t = np.zeros(p.size) # temperature
 g = np.zeros(p.size) # Gamma
 
 for i in p.index:
+    if abs(p[i]-Pc)<0.05*Pc:
+        p[i] = 0.95*Pc
     d[i] = CP.CoolProp.PropsSI('Dmass','P',p[i],'Smass',s,fluidname) 
     v[i] = 1/d[i]
     t[i] = CP.CoolProp.PropsSI('T','P',p[i],'Smass',s,fluidname) 
@@ -75,32 +78,37 @@ for i in p.index:
     m[i] = u[i]/c[i]
 
 """
-3. find sonic condition, assume A* = 1
+3. find pre-expansaion mach number
 """
-print("index for sonic condition:",np.argmin(abs(m-1)))
-dstar = d[np.argmin(abs(m-1))]
+m0 = 1.2227
+print("index for pre-expansion mach number:",np.argmin(abs(m-m0)))
+dstar = d[np.argmin(abs(m-m0))]
 vstar = 1/dstar
-Tstar = t[np.argmin(abs(m-1))]
-Pstar = p[np.argmin(abs(m-1))]
+Tstar = t[np.argmin(abs(m-m0))]
+Pstar = p[np.argmin(abs(m-m0))]
+
 
 """
 4. compute data 
 """
-V,T,M,nu = rk4(vstar, 10*vstar, Tstar, 1, 0, 1000)
+V,T,M,nu = rk4(vstar,10*vstar, Tstar, m0, 0, 1000)
 
 """
 5. write into csv file
 """    
 
-p = p/Pc
-D = 1/V/dc
-t = T/Tc
+D = 1/V/dt
+t = T/tt
+t = pd.Series(t)
+pp = np.zeros(t.size) # Gamma
+for i in t.index:
+    pp[i] = CP.CoolProp.PropsSI('P','T',t[i]*tt,'Dmass',D[i]*dt,fluidname)/pt
 
-pd.DataFrame(p).to_csv('z34.csv', index_label = "Index", header  = ['pressure']) 
-data = pd.read_csv("z34.csv", ",")
+pd.DataFrame(pp).to_csv('z6.csv', index_label = "Index", header  = ['pressure']) 
+data = pd.read_csv("z6.csv", ",")
 # append new columns
-D =pd.DataFrame({'density': D, 'temperature': T, 'Mach': M,'nu': nu})
+D =pd.DataFrame({'density': D, 'temperature': t, 'Mach': M,'nu': nu})
 newData = pd.concat([data, D], join = 'outer', axis = 1)
 # save newData in csv file
 # newData.to_csv("m4sh.csv")
-newData.to_csv("z34.csv")
+newData.to_csv("z6.csv")
