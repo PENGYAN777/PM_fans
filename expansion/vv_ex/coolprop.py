@@ -80,7 +80,7 @@ for i in p.index:
 """
 3. find pre-expansaion mach number
 """
-m0 = 1.2227
+m0 = 1.20743	
 print("index for pre-expansion mach number:",np.argmin(abs(m-m0)))
 dstar = d[np.argmin(abs(m-m0))]
 vstar = 1/dstar
