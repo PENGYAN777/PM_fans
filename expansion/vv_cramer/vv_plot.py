@@ -1,92 +1,87 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan 24 14:59:53 2023
-
-@author: yan
+Mach number comparison with reference data
 """
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.ticker import FormatStrFormatter
-"""
-read csv file
-"""
 
-z34= pd.read_csv("z34.csv", ",", skiprows=0)
-md = pd.read_csv("paper_mrho.csv", ",", skiprows=0)
-num = pd.read_csv("paper_num.csv", ",", skiprows=0)
-"""
-plot 
-"""
-# fig1 = plt.figure( dpi=300)
-# lwh = 2
-# axes = fig1.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-# axes.plot(z34.iloc[:,3] , z34.iloc[:,5] , 'k', lw=lwh, label="4th order RK")
-# axes.plot(md.iloc[:,0] , md.iloc[:,1] , 'ko', lw=lwh/2, label="Cramer et.al 1992")
+# Read CSV files
+z34 = pd.read_csv("z34.csv", ",")
+num = pd.read_csv("paper_num.csv", ",")
 
+# Sort reference data by ν (column 1 of num)
+sorted_indices = np.argsort(num.iloc[:, 1])
+sorted_x = num.iloc[sorted_indices, 1]  # ν values
+sorted_y = num.iloc[sorted_indices, 0]  # Reference Mach numbers
 
-# axes.set_xlabel('$\\rho/\\rho_c$',fontsize=12)
-# axes.set_ylabel('M',fontsize=12) 
-# axes.set_title('Mach number vs $\\rho/\\rho_c$',fontsize=14)
-# axes.legend(loc=0 , prop={'size': 10}) # 
-# fig1.savefig("vv_mrho.eps")
+# --- Plot 1: Mach vs ν ---
+fig1, ax1 = plt.subplots(figsize=(4, 4), dpi=300)
 
-# diff = 0
-# for i in range(0,17,1):
-#     x = md.iloc[i,0]
-#     y = z34.iloc[:,5][np.argmin(abs(z34.iloc[:,3]-x))]
-#     diff = diff + (y - md.iloc[i,1])/md.iloc[i,1]*100
-# diff = diff/18.
-# print('average diff:',diff)
+# 4th order RK curve
+ax1.plot(z34.iloc[:, 6], z34.iloc[:, 5], 'k', lw=2, label="4th order RK")
 
+# Reference data points
+ax1.plot(sorted_x, sorted_y, 'ko', markersize=4, label="Cramer et al. 1992")
 
-# Sort the data based on num.iloc[:,1] (x-axis values)
-sorted_indices = np.argsort(num.iloc[:,1])
+# Axes labels and limits
+ax1.set_xlabel('$\\nu$', fontsize=12)
+ax1.set_ylabel('Mach', fontsize=12)
+ax1.set_xlim([0, 1.1])
+ax1.legend(loc='best', prop={'size': 10})
+ax1.grid(True, linestyle='--', alpha=0.5)
 
-# Apply the sorted indices to both num.iloc[:,0] and num.iloc[:,1]
-sorted_x = num.iloc[sorted_indices, 1]
-sorted_y = num.iloc[sorted_indices, 0]
+plt.tight_layout()
+fig1.savefig("vv_num.eps")
 
-fig2 = plt.figure(dpi=300)
-lwh = 2
-axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7])  # size of figure
+# --- Prepare data for parity plot ---
+model_vals = []
+ref_vals = []
 
-# Plot 4th order RK data
-axes.plot(z34.iloc[:,6], z34.iloc[:,5], 'k', lw=lwh, label="4th order RK")
+for i in range(len(num)):
+    nu_ref = num.iloc[i, 1]            # ν
+    mach_ref = num.iloc[i, 0]          # Reference Mach
+    idx_closest = np.argmin(abs(z34.iloc[:, 6] - nu_ref))
+    mach_model = z34.iloc[idx_closest, 5]
+    
+    model_vals.append(mach_model)
+    ref_vals.append(mach_ref)
+# --- Compute average relative difference in % ---
+diffs = []
+for model, ref in zip(model_vals, ref_vals):
+    rel_diff = (model - ref) / ref * 100
+    diffs.append(rel_diff)
 
-# Plot the sorted Cramer et.al 1992 data as points
-axes.plot(sorted_x, sorted_y, 'ko', lw=lwh/2, label="Cramer et.al 1992")
-
-# Add 5% shaded region around sorted num.iloc[:,0] values
-lower_bound = sorted_y * 0.95  # 5% below the values
-upper_bound = sorted_y * 1.05  # 5% above the values
-
-# Fill the region between the bounds with lightgreen color
-axes.fill_between(sorted_x, lower_bound, upper_bound, color='gray', alpha=0.1, label="±5% Error Band")
-
-axes.set_ylabel('Mach', fontsize=12)
-axes.set_xlabel('$\\nu$', fontsize=12)
-plt.xlim([0, 1.1])
-
-# Set legend
-axes.legend(loc=0, prop={'size': 10})
-
-# Save figure
-fig2.savefig("vv_num.eps")
+average_diff = np.mean(diffs)
+print(f"Average relative difference: {average_diff:.2f}%")
 
 
-# diff = 0
-# for i in range(0,13,1):
-#     x = num.iloc[i,0]
-#     y = z34.iloc[:,6][np.argmin(abs(z34.iloc[:,5]-x))]
-#     diff = diff + (y - num.iloc[i,1])/num.iloc[i,1]*100
-# diff = diff/14
-diff = 0
-for i in range(0,13,1):
-    x = num.iloc[i,1]
-    y = z34.iloc[:,5][np.argmin(abs(z34.iloc[:,6]-x))]
-    diff = diff + (y - num.iloc[i,0])/num.iloc[i,0]*100
-diff = diff/14
-print('average diff:',diff)
+# --- Plot 2: Parity plot (Model vs Reference Mach) ---
+fig2, ax2 = plt.subplots(figsize=(4, 4), dpi=300)
+
+# Scatter plot of model vs reference
+ax2.plot(ref_vals, model_vals, 'ko', label='Data points')
+
+# Axis limits
+x_min, x_max = 1.0, 1.8
+ax2.set_xlim([x_min, x_max])
+ax2.set_ylim([x_min, x_max])
+
+# y = x reference line
+ax2.plot([x_min, x_max], [x_min, x_max], 'k--', label='$y = x$')
+
+# ±5% error band
+x_vals = np.linspace(x_min, x_max, 100)
+ax2.fill_between(x_vals, 0.95 * x_vals, 1.05 * x_vals, color='gray', alpha=0.2, label='±5% Error Band')
+
+# Axes labels
+ax2.set_xlabel('Reference Mach (Cramer et al.)', fontsize=12)
+ax2.set_ylabel('Model Mach (4th order RK)', fontsize=12)
+ax2.legend(loc='best', prop={'size': 10})
+ax2.grid(True, linestyle='--', alpha=0.5)
+ax2.set_aspect('equal', adjustable='box')
+
+plt.tight_layout()
+fig2.savefig("parity_num.eps")
