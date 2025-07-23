@@ -174,8 +174,8 @@ dp = (np.array(p1)-np.array(p2))/np.array(p1)
 fig2 = plt.figure( dpi=300)
 lwh = 2
 axes = fig2.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
-axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Theoretical solutions")
-axes.plot(x  , y , 'ko', lw=lwh, label="Numerical results")
+axes.plot(theta/math.pi*180  , z1_m2 , 'k', lw=lwh, label="Numerical solutions")
+axes.plot(x  , y , 'ko', lw=lwh, label="Numerical simulations")
 
 
 diff = 0
@@ -198,8 +198,8 @@ fig3 = plt.figure( dpi=300)
 lwh = 2
 axes = fig3.add_axes([0.15, 0.15, 0.7, 0.7]) #size of figure
 # find pressure data in coolprop.py, (P1-z1_P2*pt)/P1,P1=Pstar
-axes.plot(theta/math.pi*180  , (9.326e5-z1_P2*1.55e6)/9.326e5 , 'k', lw=lwh, label="Theoretical solutions")
-axes.plot(x  , (np.array(p1)-np.array(p2))/np.array(p1) , 'ko', lw=lwh, label="Numerical results")
+axes.plot(theta/math.pi*180  , (9.326e5-z1_P2*1.55e6)/9.326e5 , 'k', lw=lwh, label="Numerical solutions")
+axes.plot(x  , (np.array(p1)-np.array(p2))/np.array(p1) , 'ko', lw=lwh, label="Numerical simulations")
 
 
 diff = 0
