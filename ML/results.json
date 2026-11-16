@@ -1,0 +1,116 @@
+{
+  "input": "/home/user/CFD2020/PM_fans/ML/fluids.csv",
+  "n_fluids": 31,
+  "high_label": 1,
+  "classes": {
+    "high": 21,
+    "low": 10
+  },
+  "ranges": {
+    "high": {
+      "label": 1,
+      "n": 21,
+      "M": [
+        42.08,
+        444.92
+      ],
+      "N": [
+        13.38,
+        211.88
+      ],
+      "members": [
+        "R22",
+        "Propylene",
+        "CycloPropane",
+        "1-Butene",
+        "IsoButene",
+        "R1234yf",
+        "R1233zd(E)",
+        "n-Butane",
+        "Benzene",
+        "CycloPentane",
+        "R218",
+        "n-Pentane",
+        "RC318",
+        "CycloHexane",
+        "n-Hexane",
+        "n-Octane",
+        "MM",
+        "n-Decane",
+        "MDM",
+        "D4",
+        "D6"
+      ]
+    },
+    "low": {
+      "label": 2,
+      "n": 10,
+      "M": [
+        2.016,
+        44.0
+      ],
+      "N": [
+        3.02,
+        10.94
+      ],
+      "members": [
+        "Hydrogen",
+        "CO",
+        "Oxygen",
+        "nitrogen",
+        "Methane",
+        "CO2",
+        "Water",
+        "NH3",
+        "Ethylene",
+        "Ethane"
+      ]
+    }
+  },
+  "one_d": {
+    "N": {
+      "cut": 12.16,
+      "gap": 2.4400000000000013,
+      "interval": [
+        10.94,
+        13.38
+      ],
+      "accuracy": 1.0,
+      "errors": 0,
+      "loo_errors": 0,
+      "loo_ambiguous": 2,
+      "all_cuts_in_interval_equivalent": true
+    },
+    "M": {
+      "cut": 37.035,
+      "gap": 10.09,
+      "interval": [
+        31.99,
+        42.08
+      ],
+      "accuracy": 0.967741935483871,
+      "errors": 1,
+      "loo_errors": 3,
+      "loo_ambiguous": 1,
+      "ranges_overlap": true,
+      "overlap_interval": [
+        42.08,
+        44.0
+      ]
+    }
+  },
+  "two_d": {
+    "equation_physical": "0.005058*M + 0.018744*N = 0.436163",
+    "equation_slope_intercept": "N = 23.2699 -0.2699*M",
+    "margin_z": 0.1580263944552578,
+    "angle_deg": 61.03,
+    "accuracy": 1.0,
+    "loo_errors": 0,
+    "support_upper": "Propylene",
+    "support_lower": "Ethane",
+    "raw_scale": {
+      "equation": "0.260673*M + 0.965427*N = 22.471420",
+      "angle_deg": 74.89
+    }
+  }
+}

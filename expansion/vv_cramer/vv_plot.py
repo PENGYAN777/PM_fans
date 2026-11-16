@@ -9,8 +9,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read CSV files
-z34 = pd.read_csv("z34.csv", ",")
-num = pd.read_csv("paper_num.csv", ",")
+z34 = pd.read_csv("z34.csv", index_col=0)
+num = pd.read_csv("paper_num.csv", header=None)
 
 # Sort reference data by ν (column 1 of num)
 sorted_indices = np.argsort(num.iloc[:, 1])
@@ -21,20 +21,25 @@ sorted_y = num.iloc[sorted_indices, 0]  # Reference Mach numbers
 fig1, ax1 = plt.subplots(figsize=(4, 4), dpi=300)
 
 # 4th order RK curve
-ax1.plot(z34.iloc[:, 6], z34.iloc[:, 5], 'k', lw=2, label="4th order RK")
+ax1.plot(z34.iloc[:, 5], z34.iloc[:, 4], 'k', lw=2, label="Numerical solutions")
 
 # Reference data points
 ax1.plot(sorted_x, sorted_y, 'ko', markersize=4, label="Cramer et al. 1992")
 
+ax1.fill_between(sorted_x, 0.95 * sorted_y, 1.05 * sorted_y, color='gray', alpha=0.2, label='±5% Error Band')
+
 # Axes labels and limits
 ax1.set_xlabel('$\\nu$', fontsize=12)
-ax1.set_ylabel('Mach', fontsize=12)
+ax1.set_ylabel('$M_2$', fontsize=12)
 ax1.set_xlim([0, 1.1])
 ax1.legend(loc='best', prop={'size': 10})
-ax1.grid(True, linestyle='--', alpha=0.5)
+# ax1.grid(True, linestyle='--', alpha=0.5)
 
 plt.tight_layout()
-fig1.savefig("vv_num.eps")
+# fig1.savefig("vv_num.eps")
+fig1.savefig("vv_num.eps", bbox_inches='tight', pad_inches=0.05)
+
+
 
 # --- Prepare data for parity plot ---
 model_vals = []
@@ -43,8 +48,8 @@ ref_vals = []
 for i in range(len(num)):
     nu_ref = num.iloc[i, 1]            # ν
     mach_ref = num.iloc[i, 0]          # Reference Mach
-    idx_closest = np.argmin(abs(z34.iloc[:, 6] - nu_ref))
-    mach_model = z34.iloc[idx_closest, 5]
+    idx_closest = np.argmin(abs(z34.iloc[:, 5] - nu_ref))
+    mach_model = z34.iloc[idx_closest, 4]
     
     model_vals.append(mach_model)
     ref_vals.append(mach_ref)

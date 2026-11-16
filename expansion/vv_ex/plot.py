@@ -14,7 +14,7 @@ from matplotlib.ticker import FormatStrFormatter
 read csv file
 """
 
-z9= pd.read_csv("z9.csv", ",", skiprows=0)
+z9= pd.read_csv("z9.csv", index_col=0)
 z8= pd.read_csv("z8.csv", ",", skiprows=0)
 z7= pd.read_csv("z7.csv", ",", skiprows=0)
 z6= pd.read_csv("z6.csv", ",", skiprows=0)

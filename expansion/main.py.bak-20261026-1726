@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Nov 27 11:18:57 2022
+
+@author: P.Yan
+
+main function of CoolProp extensions
+
+Usage:
+    python main.py                                # HEOS::MM at 5e5 Pa, 500 K
+    python main.py --fluid Nitrogen -P 1e5 -T 300
+    python main.py --fluid "TTSE&HEOS::D6" -P 5e5 -T 500
+"""
+import argparse
+
+import CoolProp as CP
+
+
+def make_abstract_state(fluidname):
+    """'BACKEND::Fluid' or a plain fluid name (default backend HEOS)."""
+    if "::" in fluidname:
+        backend, _, fluid = fluidname.partition("::")
+    else:
+        backend, fluid = "HEOS", fluidname
+    return CP.AbstractState(backend, fluid)
+
+
+def safely(fn):
+    """Some fluids (e.g. MM) ship no viscosity/conductivity model and raise."""
+    try:
+        return fn()
+    except ValueError as err:
+        return f"N/A ({err})"
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Print CoolProp critical constants and one-point properties")
+    parser.add_argument("--fluid", default="HEOS::MM",
+                        help="fluid name, e.g. MM, HEOS::MM, TTSE&HEOS::D6")
+    parser.add_argument("-P", "--pressure", type=float, default=5e5,
+                        help="pressure [Pa]")
+    parser.add_argument("-T", "--temperature", type=float, default=500,
+                        help="temperature [K]")
+    args = parser.parse_args()
+
+    fluidname = args.fluid
+    P, T = args.pressure, args.temperature
+    AS = make_abstract_state(fluidname)
+
+    print("------------critical constants-----------")
+    print("fluid name:", fluidname)
+    R = AS.gas_constant()
+    MW = AS.molar_mass()
+    Rs = R/MW
+    print("Universal gas constant:", R)
+    print("molar mass:", MW)
+    print("specific gas constant:", Rs)
+    Pc = AS.p_critical()
+    Tc = AS.T_critical()
+    dc = AS.rhomass_critical()
+    vc = 1/dc
+    w = AS.trivial_keyed_output(CP.iacentric_factor)
+    print("critical pressure [Pa]:", Pc)
+    print("critical temperature [K]:", Tc)
+    print("critical density [kg/m3]:", dc)
+    print("critical specific volume [m3/kg]:", vc)
+    print("acentric factor [-]:", w)
+
+    print(f"------------compute properties at P = {P:g} Pa, T = {T:g} K-----------")
+    phase = CP.CoolProp.PhaseSI('P', P, 'T', T, fluidname)
+    AS.update(CP.PT_INPUTS, P, T)
+    rho = AS.rhomass()
+    h = AS.hmass()
+    s = AS.smass()
+    cv = AS.cvmass()
+    cp = AS.cpmass()
+    Z = AS.keyed_output(CP.iZ)
+    g = AS.keyed_output(CP.ifundamental_derivative_of_gas_dynamics)
+    mu = safely(AS.viscosity)
+    cond = safely(AS.conductivity)
+
+    print("phase:", phase)
+    print("density [kg/m3]:", rho)
+    print("specific enthalpy [J/kg]:", h)
+    print("specific entropy [J/kg/K]:", s)
+    print("cv [J/kg/K]:", cv)
+    print("cp [J/kg/K]:", cp)
+    print("cp/cv [-]:", cp/cv)
+    print("compressibility factor Z [-]:", Z)
+    print("fundamental derivative of gas dynamics G [-]:", g)
+    print("dynamic viscosity [Pa*s]:", mu)
+    print("thermal conductivity [W/m/K]:", cond)
+
+
+if __name__ == "__main__":
+    main()
