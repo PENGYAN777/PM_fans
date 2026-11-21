@@ -1,0 +1,24 @@
+# Prandtl-Meyer theory curves of Gajoni, Pederzolli & Guardone (2026),
+# Fig. 8(b): solid 'Theory' curves for the three Zt of dataset 1.
+# Digitised from the vector PDF (pdftocairo -svg): the plotted polylines were
+# extracted and mapped with the gridlines of the figure (theta 0-35 deg,
+# M 1.2-2.2); accuracy about 0.002 in M.
+# zt,theta_deg,M_theory
+0.60,5,1.3110
+0.60,10,1.4050
+0.60,15,1.4950
+0.60,20,1.5830
+0.60,25,1.6700
+0.60,30,1.7570
+0.75,5,1.3445
+0.75,10,1.4505
+0.75,15,1.5510
+0.75,20,1.6480
+0.75,25,1.7430
+0.75,30,1.8370
+0.90,5,1.3830
+0.90,10,1.4995
+0.90,15,1.6095
+0.90,20,1.7155
+0.90,25,1.8195
+0.90,30,1.9215

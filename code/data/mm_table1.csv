@@ -1,0 +1,9 @@
+# Operating conditions of Table I (siloxane MM): total conditions giving the six
+# values of the compressibility factor at total conditions Zt.
+# zt,Pt_Pa,Tt_K,Gammat
+0.90,1.55e6,673.00,0.95
+0.80,1.55e6,584.85,0.86
+0.70,2.13e6,577.21,0.82
+0.60,2.13e6,550.71,0.73
+0.50,2.32e6,543.88,0.80
+0.40,2.32e6,535.13,1.09

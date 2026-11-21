@@ -1,0 +1,19 @@
+# Pt/Pc = 1.2; theta_max from the single-phase and Gamma > 0 criteria
+zt,Tt_K,theta_max_deg,limiting_mechanism
+0.28,529.19,0.00,two-phase at the sonic point
+0.32,531.05,143.34,vacuum limit (P -> 0)
+0.36,532.88,141.49,vacuum limit (P -> 0)
+0.40,535.07,140.35,vacuum limit (P -> 0)
+0.44,537.85,139.40,vacuum limit (P -> 0)
+0.48,541.45,138.53,vacuum limit (P -> 0)
+0.52,546.08,137.70,vacuum limit (P -> 0)
+0.56,551.97,136.88,vacuum limit (P -> 0)
+0.60,559.36,136.07,vacuum limit (P -> 0)
+0.64,568.56,135.27,vacuum limit (P -> 0)
+0.68,579.95,134.49,vacuum limit (P -> 0)
+0.72,594.07,133.71,vacuum limit (P -> 0)
+0.76,611.69,132.96,vacuum limit (P -> 0)
+0.80,633.96,132.22,vacuum limit (P -> 0)
+0.84,662.72,131.50,vacuum limit (P -> 0)
+0.88,701.07,130.81,vacuum limit (P -> 0)
+0.92,754.76,130.14,vacuum limit (P -> 0)

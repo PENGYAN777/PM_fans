@@ -1,0 +1,13 @@
+# Toluene Prandtl-Meyer function, digitised from Cramer & Crickenberger (1992),
+# AIAA J. 30(2) 561-564, Fig. 2 (the curve labelled "Toluene").
+# Stagnation state (their Table 1): T0/Tc = 1.07, P0/Pc = 2.01, V0/Vc = 0.67.
+# nu in rad; M is the Mach number at which the published curve reaches nu;
+# M_sigma = +-0.02 is the digitisation uncertainty of the 1992 scan.
+nu_rad,M_digitised,M_sigma
+0.40,1.555,0.020
+0.50,1.565,0.020
+0.60,1.580,0.020
+0.70,1.592,0.020
+0.80,1.610,0.020
+0.90,1.628,0.020
+1.00,1.665,0.020
